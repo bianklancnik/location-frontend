@@ -5,7 +5,7 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import "./App.css";
+import "./styles/Global.css";
 import Home from "./pages/Home";
 
 type ProtectedRouteType = {
