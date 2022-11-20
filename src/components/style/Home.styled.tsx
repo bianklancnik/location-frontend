@@ -11,7 +11,7 @@ export const WelcomeContainer = styled.div`
 
 export const WelcomeTitle = styled.div`
   font-size: 64px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--primary);
 `;
 

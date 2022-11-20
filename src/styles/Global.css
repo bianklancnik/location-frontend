@@ -16,8 +16,9 @@
     --rest-pos: #233D4D;
 }
 
-html {
-    font-family: 'Roboto';
+body {
+  font-family: 'Roboto';
+  color: var(--dark);
 }
 
 /* body * {
