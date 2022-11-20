@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import "./styles/Global.css";
 import Home from "./pages/Home";
+import SignUp from "./pages/SignUp";
 
 type ProtectedRouteType = {
   user: any;
@@ -27,6 +28,7 @@ function App() {
       <Routes>
         <Route path="/">
           <Route index element={<Home />} />
+          <Route path="/signup" element={<SignUp />} />
         </Route>
       </Routes>
     </BrowserRouter>

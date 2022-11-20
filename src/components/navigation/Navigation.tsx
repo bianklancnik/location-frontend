@@ -1,5 +1,6 @@
 import { Logo } from "../../assets/ImageExporter";
-import { PrimaryButton } from "../common/Button.style";
+import { StyledLink } from "../../styles/Global.styled";
+import { PrimaryButton } from "../common/Button.styled";
 import {
   Divider,
   ItemBold,
@@ -14,7 +15,9 @@ const Navigation = () => {
       <RightSide>
         <ItemBold>Sign in</ItemBold>
         <Divider>or</Divider>
-        <PrimaryButton>SIGN UP</PrimaryButton>
+        <StyledLink to="/signup">
+          <PrimaryButton>SIGN UP</PrimaryButton>
+        </StyledLink>
       </RightSide>
     </NavigationContainer>
   );

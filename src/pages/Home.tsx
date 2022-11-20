@@ -1,4 +1,4 @@
-import { PrimaryButton } from "../components/common/Button.style";
+import { PrimaryButton } from "../components/common/Button.styled";
 import Footer from "../components/footer/Footer";
 import {
   HomeContainerMiddle,
@@ -10,10 +10,11 @@ import {
   WelcomeTitle,
   BackgroundImageGridItem,
   HomeButtonContainer,
-} from "../components/home/Home.styled";
+} from "../components/style/Home.styled";
 import Navigation from "../components/navigation/Navigation";
 import { Main, Wrapper } from "../styles/PageLayout.styled";
 import { MdLockOutline } from "react-icons/md";
+import { StyledLink } from "../styles/Global.styled";
 
 const Home = () => {
   return (
@@ -26,7 +27,9 @@ const Home = () => {
             Geotagger is website that allows you to post picture and tag it on
             the map. Other user than try to locate it via Google Maps.
           </WelcomeItem>
-          <PrimaryButton>SIGN UP</PrimaryButton>
+          <StyledLink to="/signup">
+            <PrimaryButton>SIGN UP</PrimaryButton>
+          </StyledLink>
         </WelcomeContainer>
         <HomeContainerMiddle>
           <HomeTitle>Try yourself at Geotagger!</HomeTitle>
@@ -47,7 +50,9 @@ const Home = () => {
           </BackgroundImageGridItem>
         </ImageGrid>
         <HomeButtonContainer>
-          <PrimaryButton>SIGN UP</PrimaryButton>
+          <StyledLink to="/signup">
+            <PrimaryButton>SIGN UP</PrimaryButton>
+          </StyledLink>
         </HomeButtonContainer>
       </Main>
       <Footer />
