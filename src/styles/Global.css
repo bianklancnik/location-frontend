@@ -21,6 +21,6 @@ body {
   color: var(--dark);
 }
 
-body * {
+/* body * {
   outline: auto;
-}
+} */

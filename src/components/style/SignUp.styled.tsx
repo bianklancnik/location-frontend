@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BsEyeFill } from "react-icons/bs";
 
 export const MainDivider = styled.div`
   display: flex;
@@ -105,6 +106,11 @@ export const FormHalfContainer = styled.div`
   gap: 8px;
 `;
 
+export const PasswordContainer = styled.div`
+  position: relative;
+  width: 100%;
+`;
+
 export const FormBottomContainer = styled.div`
   width: 100%;
   display: flex;
@@ -113,3 +119,13 @@ export const FormBottomContainer = styled.div`
 `;
 
 export const FormBottomText = styled.div``;
+
+export const EyeIcon = styled(BsEyeFill)`
+  position: absolute;
+  right: 2%;
+  top: 20%;
+  cursor: pointer;
+  &:focus {
+    color: var(--dark);
+  }
+`;
