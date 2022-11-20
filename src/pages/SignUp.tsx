@@ -1,5 +1,5 @@
 import { Logo, WhiteLogoVector } from "../assets/ImageExporter";
-import { PrimaryButton } from "../components/common/Button.styled";
+import { FullWidthPrimaryButton } from "../components/common/Button.styled";
 import {
   FormContainer,
   FormHalfContainer,
@@ -16,15 +16,18 @@ import {
   RightSideContainer,
   FormBottomContainer,
   FormBottomText,
+  EyeIcon,
+  PasswordContainer,
 } from "../components/style/SignUp.styled";
 import { AvatarLarge, StyledLink } from "../styles/Global.styled";
-import { BsEyeFill } from "react-icons/bs";
 
 const SignUp = () => {
   return (
     <MainDivider>
       <LeftSideContainer>
-        <LogoLeft alt="" src={Logo} />
+        <StyledLink to="/">
+          <LogoLeft alt="" src={Logo} />
+        </StyledLink>
         <FormContainer>
           <FormTitle>Sign up</FormTitle>
           <FormText>
@@ -40,10 +43,16 @@ const SignUp = () => {
             <FormInputHalf placeholder="Jones" />
           </FormHalfContainer>
           <FormInputTitle>Password</FormInputTitle>
-          <FormInput type="password" />
+          <PasswordContainer>
+            <FormInput type="password" />
+            <EyeIcon size={20} color="grey" />
+          </PasswordContainer>
           <FormInputTitle>Confirm password</FormInputTitle>
-          <FormInput type="password" />
-          <PrimaryButton>SIGN UP</PrimaryButton>
+          <PasswordContainer>
+            <FormInput type="password" />
+            <EyeIcon size={20} color="grey" />
+          </PasswordContainer>
+          <FullWidthPrimaryButton>SIGN UP</FullWidthPrimaryButton>
           <FormBottomContainer>
             <FormBottomText>Already have an account?</FormBottomText>
             <StyledLink to="/signin">Sign in</StyledLink>

@@ -1,5 +1,5 @@
 import { Logo, WhiteLogoVector } from "../assets/ImageExporter";
-import { PrimaryButton } from "../components/common/Button.styled";
+import { FullWidthPrimaryButton } from "../components/common/Button.styled";
 import {
   FormBottomContainer,
   FormBottomText,
@@ -20,7 +20,9 @@ const SignIn = () => {
   return (
     <MainDivider>
       <LeftSideContainer>
-        <LogoLeft alt="" src={Logo} />
+        <StyledLink to="/">
+          <LogoLeft alt="" src={Logo} />
+        </StyledLink>
         <FormContainer>
           <FormTitle>Sign in</FormTitle>
           <FormText>
@@ -30,7 +32,7 @@ const SignIn = () => {
           <FormInput placeholder="example@net.com" />
           <FormInputTitle>Password</FormInputTitle>
           <FormInput type="password" />
-          <PrimaryButton>SIGN IN</PrimaryButton>
+          <FullWidthPrimaryButton>SIGN IN</FullWidthPrimaryButton>
           <FormBottomContainer>
             <FormBottomText>Do you want to create an account?</FormBottomText>
             <StyledLink to="/signup">Sign up</StyledLink>

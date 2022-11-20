@@ -18,3 +18,22 @@ export const PrimaryButton = styled.div`
     background: var(--dark);
   }
 `;
+
+export const FullWidthPrimaryButton = styled.div`
+  border: 0;
+  outline: 0;
+  border-radius: 3px;
+  color: #fff;
+  background: var(--primary);
+  width: 100%;
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  &:hover {
+    background: var(--dark);
+  }
+`;
