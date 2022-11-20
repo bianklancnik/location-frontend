@@ -13,7 +13,9 @@ const Navigation = () => {
     <NavigationContainer>
       <img alt="" src={Logo} />
       <RightSide>
-        <ItemBold>Sign in</ItemBold>
+        <StyledLink to="/signin">
+          <ItemBold>Sign in</ItemBold>
+        </StyledLink>
         <Divider>or</Divider>
         <StyledLink to="/signup">
           <PrimaryButton>SIGN UP</PrimaryButton>

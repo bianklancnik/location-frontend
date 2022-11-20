@@ -28,6 +28,7 @@ export const ItemBold = styled.div`
   margin: 10px auto 10px auto;
   font-size: 16px;
   font-weight: 500;
+  color: var(--dark);
   cursor: pointer;
   display: flex;
   align-items: center;

@@ -18,6 +18,7 @@ import {
   FormBottomText,
 } from "../components/style/SignUp.styled";
 import { AvatarLarge, StyledLink } from "../styles/Global.styled";
+import { BsEyeFill } from "react-icons/bs";
 
 const SignUp = () => {
   return (
@@ -45,7 +46,7 @@ const SignUp = () => {
           <PrimaryButton>SIGN UP</PrimaryButton>
           <FormBottomContainer>
             <FormBottomText>Already have an account?</FormBottomText>
-            <StyledLink to="/">Sign in</StyledLink>
+            <StyledLink to="/signin">Sign in</StyledLink>
           </FormBottomContainer>
         </FormContainer>
       </LeftSideContainer>
