@@ -17,7 +17,13 @@ export const RightSide = styled.div`
   align-items: center;
 `;
 
-export const Item = styled.div``;
+export const Item = styled.div`
+  color: var(--dark);
+  width: 150px;
+  margin: 10px auto 10px auto;
+  font-size: 16px;
+  text-align: center;
+`;
 
 export const Divider = styled.div`
   padding: 0 20px;
@@ -33,4 +39,25 @@ export const ItemBold = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+export const AvatarContainer = styled.div`
+  width: 150px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+
+export const PlusSign = styled.div`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  &:hover {
+    background-color: var(--dark);
+  }
 `;

@@ -13,3 +13,8 @@ export const Main = styled.main`
   flex: 1;
   padding: 50px;
 `;
+
+export const MainWithoutBackground = styled.main`
+  flex: 1;
+  padding: 50px;
+`;

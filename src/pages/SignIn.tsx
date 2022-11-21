@@ -14,7 +14,7 @@ import {
   MainDivider,
   RightSideContainer,
 } from "../components/style/SignIn.styled";
-import { StyledLink } from "../styles/Global.styled";
+import { StyledLink, StyledLinkPrimary } from "../styles/Global.styled";
 
 const SignIn = () => {
   return (
@@ -35,7 +35,7 @@ const SignIn = () => {
           <FullWidthPrimaryButton>SIGN IN</FullWidthPrimaryButton>
           <FormBottomContainer>
             <FormBottomText>Do you want to create an account?</FormBottomText>
-            <StyledLink to="/signup">Sign up</StyledLink>
+            <StyledLinkPrimary to="/signup">Sign up</StyledLinkPrimary>
           </FormBottomContainer>
         </FormContainer>
       </LeftSideContainer>

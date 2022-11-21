@@ -31,9 +31,20 @@ export const HomeTitle = styled.div`
   color: var(--primary);
 `;
 
-export const HomeItem = styled.div`
+export const HomeItemMiddle = styled.div`
   width: 40%;
   text-align: center;
+`;
+
+export const HomeContainerLeft = styled.div`
+  display: flex;
+  flex-flow: column;
+  gap: 20px;
+  margin-bottom: 4%;
+`;
+
+export const HomeItemLeft = styled.div`
+  text-align: left;
 `;
 
 export const ImageGrid = styled.div`
@@ -44,7 +55,7 @@ export const ImageGrid = styled.div`
 `;
 
 export const BackgroundImageGridItem = styled.div`
-  height: 250px;
+  height: 280px;
   width: 32%;
   border-radius: 4px;
   display: flex;
@@ -57,6 +68,23 @@ export const BackgroundImageGridItem = styled.div`
       rgba(159, 193, 129, 0.6) 128%
     ),
     url("bled.jpg");
+`;
+
+export const Distance = styled.div`
+  color: #fff;
+  font-weight: 700;
+  font-size: 30px;
+`;
+
+export const ImageGridItem = styled.img`
+  height: 280px;
+  width: 32%;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2%;
+  filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.15));
 `;
 
 export const HomeButtonContainer = styled.div`

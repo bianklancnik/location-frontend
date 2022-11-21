@@ -19,7 +19,11 @@ import {
   EyeIcon,
   PasswordContainer,
 } from "../components/style/SignUp.styled";
-import { AvatarLarge, StyledLink } from "../styles/Global.styled";
+import {
+  AvatarLarge,
+  StyledLink,
+  StyledLinkPrimary,
+} from "../styles/Global.styled";
 
 const SignUp = () => {
   return (
@@ -33,7 +37,7 @@ const SignUp = () => {
           <FormText>
             Your name will appear on posts and your public profle.
           </FormText>
-          <AvatarLarge alt="" src="logo192.png" />
+          <AvatarLarge alt="" src="bled.jpg" />
           <FormInputTitle>Email</FormInputTitle>
           <FormInput placeholder="example@net.com" />
           <FormHalfContainer>
@@ -55,7 +59,7 @@ const SignUp = () => {
           <FullWidthPrimaryButton>SIGN UP</FullWidthPrimaryButton>
           <FormBottomContainer>
             <FormBottomText>Already have an account?</FormBottomText>
-            <StyledLink to="/signin">Sign in</StyledLink>
+            <StyledLinkPrimary to="/signin">Sign in</StyledLinkPrimary>
           </FormBottomContainer>
         </FormContainer>
       </LeftSideContainer>
