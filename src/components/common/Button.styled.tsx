@@ -37,3 +37,24 @@ export const FullWidthPrimaryButton = styled.div`
     background: var(--dark);
   }
 `;
+
+export const AlternativeButton = styled.div`
+  outline: 0;
+  border-radius: 3px;
+  color: var(--primary);
+  background: #fff;
+  border: 1px solid #669f89;
+  border-radius: 4px;
+  width: 130px;
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  &:hover {
+    background: var(--primary);
+    color: #fff;
+  }
+`;
