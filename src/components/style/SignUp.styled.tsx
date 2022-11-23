@@ -28,8 +28,7 @@ export const RightSideContainer = styled.div`
 `;
 
 export const LogoLeft = styled.img`
-  padding: 15px 32px;
-  width: 171px;
+  padding: 13px 50px;
 `;
 
 export const LogoRight = styled.img``;

@@ -1,31 +1,32 @@
+import { MdLockOutline } from "react-icons/md";
 import {
   AlternativeButton,
   PrimaryButton,
 } from "../components/common/Button.styled";
 import Footer from "../components/footer/Footer";
+import Navigation from "../components/navigation/Navigation";
 import {
+  BackgroundImageGridItem,
+  Distance,
+  HomeButtonContainer,
+  HomeContainerLeft,
   HomeContainerMiddle,
-  ImageGrid,
+  HomeItemLeft,
+  HomeItemMiddle,
   HomeTitle,
+  ImageGrid,
+  ImageGridImg,
+  ImageGridItem,
   WelcomeContainer,
   WelcomeItem,
   WelcomeTitle,
-  BackgroundImageGridItem,
-  HomeButtonContainer,
-  HomeContainerLeft,
-  HomeItemMiddle,
-  HomeItemLeft,
-  Distance,
-  ImageGridItem,
 } from "../components/style/Home.styled";
-import Navigation from "../components/navigation/Navigation";
+import { StyledLink } from "../styles/Global.styled";
 import {
   Main,
   MainWithoutBackground,
   Wrapper,
 } from "../styles/PageLayout.styled";
-import { MdLockOutline } from "react-icons/md";
-import { StyledLink } from "../styles/Global.styled";
 
 const Home = () => {
   const isLoggedIn = true;
@@ -66,12 +67,24 @@ const Home = () => {
             </HomeItemLeft>
           </HomeContainerLeft>
           <ImageGrid>
-            <ImageGridItem alt="" src="bled.jpg" />
-            <ImageGridItem alt="" src="bled.jpg" />
-            <ImageGridItem alt="" src="bled.jpg" />
-            <ImageGridItem alt="" src="bled.jpg" />
-            <ImageGridItem alt="" src="bled.jpg" />
-            <ImageGridItem alt="" src="bled.jpg" />
+            <ImageGridItem to="/location">
+              <ImageGridImg alt="" src="bled.jpg" />
+            </ImageGridItem>
+            <ImageGridItem to="/location">
+              <ImageGridImg alt="" src="bled.jpg" />
+            </ImageGridItem>
+            <ImageGridItem to="/location">
+              <ImageGridImg alt="" src="bled.jpg" />
+            </ImageGridItem>
+            <ImageGridItem to="/location">
+              <ImageGridImg alt="" src="bled.jpg" />
+            </ImageGridItem>
+            <ImageGridItem to="/location">
+              <ImageGridImg alt="" src="bled.jpg" />
+            </ImageGridItem>
+            <ImageGridItem to="/location">
+              <ImageGridImg alt="" src="bled.jpg" />
+            </ImageGridItem>
           </ImageGrid>
           <HomeButtonContainer>
             <StyledLink to="/signup">

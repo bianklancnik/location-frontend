@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const NavigationContainer = styled.nav`
-  padding: 20px 32px;
+  padding: 20px 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,7 +19,7 @@ export const RightSide = styled.div`
 
 export const Item = styled.div`
   color: var(--dark);
-  width: 150px;
+  width: 120px;
   margin: 10px auto 10px auto;
   font-size: 16px;
   text-align: center;
@@ -42,11 +42,13 @@ export const ItemBold = styled.div`
 `;
 
 export const AvatarContainer = styled.div`
-  width: 150px;
+  width: 100px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 `;
+
+export const LogoImage = styled.img``;
 
 export const PlusSign = styled.div`
   width: 40px;

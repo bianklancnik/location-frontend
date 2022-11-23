@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const WelcomeContainer = styled.div`
@@ -76,8 +77,7 @@ export const Distance = styled.div`
   font-size: 30px;
 `;
 
-export const ImageGridItem = styled.img`
-  height: 280px;
+export const ImageGridItem = styled(Link)`
   width: 32%;
   border-radius: 4px;
   display: flex;
@@ -85,6 +85,11 @@ export const ImageGridItem = styled.img`
   align-items: center;
   margin-bottom: 2%;
   filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.15));
+`;
+
+export const ImageGridImg = styled.img`
+  width: 100%;
+  border-radius: 4px;
 `;
 
 export const HomeButtonContainer = styled.div`
