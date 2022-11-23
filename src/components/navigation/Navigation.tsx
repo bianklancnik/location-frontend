@@ -6,6 +6,7 @@ import {
   Divider,
   Item,
   ItemBold,
+  LogoImage,
   NavigationContainer,
   PlusSign,
   RightSide,
@@ -17,12 +18,14 @@ const Navigation = () => {
 
   return (
     <NavigationContainer>
-      <img alt="" src={Logo} />
+      <StyledLink to="/">
+        <LogoImage alt="" src={Logo} />
+      </StyledLink>
       <RightSide>
         {isLoggedIn ? (
           <>
             <Item>
-              <StyledLink to="/signin">Home</StyledLink>
+              <StyledLink to="/">Home</StyledLink>
             </Item>
             <Item>
               <StyledLink to="/signin">Profile settings</StyledLink>

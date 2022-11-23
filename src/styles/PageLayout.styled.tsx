@@ -18,3 +18,11 @@ export const MainWithoutBackground = styled.main`
   flex: 1;
   padding: 50px;
 `;
+
+export const MainWithoutBackgroundSplit = styled.main`
+  flex: 1;
+  padding: 50px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+`;

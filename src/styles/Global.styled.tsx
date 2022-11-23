@@ -30,3 +30,7 @@ export const AvatarSmall = styled.img`
     );
   }
 `;
+
+export const GreenFont = styled.span`
+  color: var(--primary);
+`;
