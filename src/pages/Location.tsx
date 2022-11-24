@@ -1,3 +1,4 @@
+import { useJsApiLoader, GoogleMap } from "@react-google-maps/api";
 import { PrimaryButton } from "../components/common/Button.styled";
 import Footer from "../components/footer/Footer";
 import Navigation from "../components/navigation/Navigation";
@@ -28,7 +29,20 @@ import {
   Wrapper,
 } from "../styles/PageLayout.styled";
 
+const center = {
+  lat: 46.0569465,
+  lng: 14.505751499999974,
+};
+
 const Location = () => {
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY || "",
+  });
+
+  if (!isLoaded) {
+    return <div>Map can not be loaded</div>;
+  }
+
   return (
     <Wrapper>
       <Navigation />
@@ -38,14 +52,20 @@ const Location = () => {
             Take a <GreenFont>guess</GreenFont>!
           </LocationTitle>
           <LocationImage alt="" src="bled.jpg" />
-          <LocationMap>Map</LocationMap>
+          <LocationMap>
+            <GoogleMap
+              center={center}
+              zoom={13}
+              mapContainerStyle={{ width: "100%", height: "100%" }}
+            ></GoogleMap>
+          </LocationMap>
           <BottomInputContainer>
             <BottomInputErrorTitle>Error distance</BottomInputErrorTitle>
             <BottomInputLocationTitle>
               Guessed location
             </BottomInputLocationTitle>
-            <BottomInputError />
-            <BottomInputLocation />
+            <BottomInputError disabled={true} />
+            <BottomInputLocation disabled={true} />
           </BottomInputContainer>
           <PrimaryButton>GUESS</PrimaryButton>
         </LocationContainer>
