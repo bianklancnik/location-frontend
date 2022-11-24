@@ -22,7 +22,6 @@ export const LocationImage = styled.img`
 `;
 
 export const LocationMap = styled.div`
-  border: 1px solid black;
   border-radius: 4px;
   height: 220px;
 `;

@@ -8,7 +8,6 @@ import Navigation from "../components/navigation/Navigation";
 import {
   BackgroundImageGridItem,
   Distance,
-  HomeButtonContainer,
   HomeContainerLeft,
   HomeContainerMiddle,
   HomeItemLeft,
@@ -21,7 +20,7 @@ import {
   WelcomeItem,
   WelcomeTitle,
 } from "../components/style/Home.styled";
-import { StyledLink } from "../styles/Global.styled";
+import { ButtonCenterContainer, StyledLink } from "../styles/Global.styled";
 import {
   Main,
   MainWithoutBackground,
@@ -54,11 +53,11 @@ const Home = () => {
               <Distance>200 m</Distance>
             </BackgroundImageGridItem>
           </ImageGrid>
-          <HomeButtonContainer>
+          <ButtonCenterContainer>
             <StyledLink to="/signup">
               <AlternativeButton>LOAD MORE</AlternativeButton>
             </StyledLink>
-          </HomeButtonContainer>
+          </ButtonCenterContainer>
           <HomeContainerLeft>
             <HomeTitle>New locations</HomeTitle>
             <HomeItemLeft>
@@ -86,11 +85,11 @@ const Home = () => {
               <ImageGridImg alt="" src="bled.jpg" />
             </ImageGridItem>
           </ImageGrid>
-          <HomeButtonContainer>
+          <ButtonCenterContainer>
             <StyledLink to="/signup">
               <AlternativeButton>LOAD MORE</AlternativeButton>
             </StyledLink>
-          </HomeButtonContainer>
+          </ButtonCenterContainer>
         </MainWithoutBackground>
       ) : (
         <Main>
@@ -122,11 +121,11 @@ const Home = () => {
               <MdLockOutline color="white" size={40} />
             </BackgroundImageGridItem>
           </ImageGrid>
-          <HomeButtonContainer>
+          <ButtonCenterContainer>
             <StyledLink to="/signup">
               <PrimaryButton>SIGN UP</PrimaryButton>
             </StyledLink>
-          </HomeButtonContainer>
+          </ButtonCenterContainer>
         </Main>
       )}
       <Footer />

@@ -22,15 +22,26 @@ export const AvatarSmall = styled.img`
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
-  &:hover {
-    mask-image: linear-gradient(
-      90deg,
-      rgba(102, 159, 137, 0.6) 50%,
-      rgba(159, 193, 129, 0.6) 128%
-    );
-  }
 `;
 
 export const GreenFont = styled.span`
   color: var(--primary);
+`;
+
+export const ButtonRightContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
+
+export const ButtonLeftContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+export const ButtonCenterContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

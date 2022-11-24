@@ -6,7 +6,7 @@ export const WelcomeContainer = styled.div`
   flex-flow: column;
   width: 35%;
   justify-content: flex-start;
-  gap: 30px;
+  gap: 20px;
   padding: 5% 0 15% 0;
 `;
 
@@ -23,7 +23,7 @@ export const HomeContainerMiddle = styled.div`
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   margin-bottom: 4%;
 `;
 
@@ -40,7 +40,7 @@ export const HomeItemMiddle = styled.div`
 export const HomeContainerLeft = styled.div`
   display: flex;
   flex-flow: column;
-  gap: 20px;
+  gap: 10px;
   margin-bottom: 4%;
 `;
 
@@ -69,6 +69,7 @@ export const BackgroundImageGridItem = styled.div`
       rgba(159, 193, 129, 0.6) 128%
     ),
     url("bled.jpg");
+  margin-bottom: 2%;
 `;
 
 export const Distance = styled.div`
@@ -94,7 +95,6 @@ export const ImageGridImg = styled.img`
 
 export const HomeButtonContainer = styled.div`
   display: flex;
-  flex-flow: column;
   justify-content: center;
   align-items: center;
   margin: 5% 0 3% 0;
