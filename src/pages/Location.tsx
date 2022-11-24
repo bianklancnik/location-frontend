@@ -23,7 +23,11 @@ import {
   LocationMap,
   LocationTitle,
 } from "../components/style/Location.styled";
-import { AvatarSmall, GreenFont } from "../styles/Global.styled";
+import {
+  AvatarSmall,
+  ButtonLeftContainer,
+  GreenFont,
+} from "../styles/Global.styled";
 import {
   MainWithoutBackgroundSplit,
   Wrapper,
@@ -39,10 +43,6 @@ const Location = () => {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY || "",
   });
 
-  if (!isLoaded) {
-    return <div>Map can not be loaded</div>;
-  }
-
   return (
     <Wrapper>
       <Navigation />
@@ -53,11 +53,15 @@ const Location = () => {
           </LocationTitle>
           <LocationImage alt="" src="bled.jpg" />
           <LocationMap>
-            <GoogleMap
-              center={center}
-              zoom={13}
-              mapContainerStyle={{ width: "100%", height: "100%" }}
-            ></GoogleMap>
+            {isLoaded ? (
+              <GoogleMap
+                center={center}
+                zoom={13}
+                mapContainerStyle={{ width: "100%", height: "100%" }}
+              ></GoogleMap>
+            ) : (
+              <div>Map can not be loaded</div>
+            )}
           </LocationMap>
           <BottomInputContainer>
             <BottomInputErrorTitle>Error distance</BottomInputErrorTitle>
@@ -67,7 +71,9 @@ const Location = () => {
             <BottomInputError disabled={true} />
             <BottomInputLocation disabled={true} />
           </BottomInputContainer>
-          <PrimaryButton>GUESS</PrimaryButton>
+          <ButtonLeftContainer>
+            <PrimaryButton>GUESS</PrimaryButton>
+          </ButtonLeftContainer>
         </LocationContainer>
         <LeaderboardContainer>
           <LeaderboardTitle>Leaderboard</LeaderboardTitle>

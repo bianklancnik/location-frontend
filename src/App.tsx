@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Location from "./pages/Location";
+import Profile from "./pages/Profile";
 
 type ProtectedRouteType = {
   user: any;
@@ -33,6 +34,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/location" element={<Location />} />
+          <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>

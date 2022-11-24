@@ -28,7 +28,7 @@ const Navigation = () => {
               <StyledLink to="/">Home</StyledLink>
             </Item>
             <Item>
-              <StyledLink to="/signin">Profile settings</StyledLink>
+              <StyledLink to="/profile">Profile settings</StyledLink>
             </Item>
             <Item>
               <StyledLink to="/signin">Logout</StyledLink>
