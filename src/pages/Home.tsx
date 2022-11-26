@@ -54,7 +54,7 @@ const Home = () => {
             </BackgroundImageGridItem>
           </ImageGrid>
           <ButtonCenterContainer>
-            <StyledLink to="/signup">
+            <StyledLink to="/sign-up">
               <AlternativeButton>LOAD MORE</AlternativeButton>
             </StyledLink>
           </ButtonCenterContainer>
@@ -86,7 +86,7 @@ const Home = () => {
             </ImageGridItem>
           </ImageGrid>
           <ButtonCenterContainer>
-            <StyledLink to="/signup">
+            <StyledLink to="/sign-up">
               <AlternativeButton>LOAD MORE</AlternativeButton>
             </StyledLink>
           </ButtonCenterContainer>
@@ -99,7 +99,7 @@ const Home = () => {
               Geotagger is website that allows you to post picture and tag it
               the map. Other user than try to locate it via Google Maps.
             </WelcomeItem>
-            <StyledLink to="/signup">
+            <StyledLink to="/sign-up">
               <PrimaryButton>SIGN UP</PrimaryButton>
             </StyledLink>
           </WelcomeContainer>
@@ -122,7 +122,7 @@ const Home = () => {
             </BackgroundImageGridItem>
           </ImageGrid>
           <ButtonCenterContainer>
-            <StyledLink to="/signup">
+            <StyledLink to="/sign-up">
               <PrimaryButton>SIGN UP</PrimaryButton>
             </StyledLink>
           </ButtonCenterContainer>

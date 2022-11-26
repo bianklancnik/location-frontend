@@ -1,6 +1,6 @@
-import { useJsApiLoader, GoogleMap } from "@react-google-maps/api";
 import { PrimaryButton } from "../components/common/Button.styled";
 import Footer from "../components/footer/Footer";
+import Map from "../components/map/Map";
 import Navigation from "../components/navigation/Navigation";
 import {
   BottomInputContainer,
@@ -33,16 +33,7 @@ import {
   Wrapper,
 } from "../styles/PageLayout.styled";
 
-const center = {
-  lat: 46.0569465,
-  lng: 14.505751499999974,
-};
-
 const Location = () => {
-  const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY || "",
-  });
-
   return (
     <Wrapper>
       <Navigation />
@@ -52,17 +43,7 @@ const Location = () => {
             Take a <GreenFont>guess</GreenFont>!
           </LocationTitle>
           <LocationImage alt="" src="bled.jpg" />
-          <LocationMap>
-            {isLoaded ? (
-              <GoogleMap
-                center={center}
-                zoom={13}
-                mapContainerStyle={{ width: "100%", height: "100%" }}
-              ></GoogleMap>
-            ) : (
-              <div>Map can not be loaded</div>
-            )}
-          </LocationMap>
+          <LocationMap>{<Map />}</LocationMap>
           <BottomInputContainer>
             <BottomInputErrorTitle>Error distance</BottomInputErrorTitle>
             <BottomInputLocationTitle>

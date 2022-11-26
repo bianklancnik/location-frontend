@@ -1,5 +1,6 @@
 import { FaPen } from "react-icons/fa";
 import { HiOutlineX } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 import { AlternativeButton } from "../components/common/Button.styled";
 import Footer from "../components/footer/Footer";
 import Navigation from "../components/navigation/Navigation";
@@ -17,6 +18,8 @@ import { AvatarLarge, ButtonCenterContainer } from "../styles/Global.styled";
 import { MainWithoutBackgroundGap, Wrapper } from "../styles/PageLayout.styled";
 
 const Profile = () => {
+  const navigate = useNavigate();
+
   return (
     <Wrapper>
       <Navigation />
@@ -46,7 +49,11 @@ const Profile = () => {
         <ProfileTitle>My uploads</ProfileTitle>
         <ImageGrid>
           <GridItemUpload>
-            <EditUpload>
+            <EditUpload
+              onClick={() => {
+                navigate("/edit-location");
+              }}
+            >
               <FaPen color="white" size={18} />
             </EditUpload>
             <DeleteUpload>

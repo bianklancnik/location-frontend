@@ -19,6 +19,14 @@ export const MainWithoutBackground = styled.main`
   padding: 50px;
 `;
 
+export const MainWithoutBackgroundCenter = styled.main`
+  flex: 1;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export const MainWithoutBackgroundGap = styled.main`
   flex: 1;
   padding: 50px;
