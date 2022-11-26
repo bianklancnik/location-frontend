@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { StockImage } from "../../assets/ImageExporter";
 
 export const ProfileInfoContainer = styled.div`
   display: flex;
@@ -30,7 +31,7 @@ export const GridItem = styled.div`
       rgba(102, 159, 137, 0.6) 50%,
       rgba(159, 193, 129, 0.6) 128%
     ),
-    url("bled.jpg");
+    url(${StockImage});
 `;
 
 export const GridItemUpload = styled.div`
@@ -42,7 +43,7 @@ export const GridItemUpload = styled.div`
   align-items: center;
   background-size: cover;
   background-position: center;
-  background-image: url("bled.jpg");
+  background-image: url(${StockImage});
   position: relative;
 `;
 

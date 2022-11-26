@@ -1,3 +1,4 @@
+import { StockImage } from "../assets/ImageExporter";
 import { PrimaryButton } from "../components/common/Button.styled";
 import Footer from "../components/footer/Footer";
 import Map from "../components/map/Map";
@@ -42,7 +43,7 @@ const Location = () => {
           <LocationTitle>
             Take a <GreenFont>guess</GreenFont>!
           </LocationTitle>
-          <LocationImage alt="" src="bled.jpg" />
+          <LocationImage alt="" src={StockImage} />
           <LocationMap>{<Map />}</LocationMap>
           <BottomInputContainer>
             <BottomInputErrorTitle>Error distance</BottomInputErrorTitle>
@@ -62,7 +63,7 @@ const Location = () => {
             <LeaderboardItem>
               <LeaderboardItemLeft>
                 <LeaderboardPlace>1</LeaderboardPlace>
-                <AvatarSmall alt="" src="bled.jpg" />
+                <AvatarSmall />
                 <LeaderboardText>
                   <LeaderboardPersonName>Bian Klančnik</LeaderboardPersonName>
                   <LeaderboardGuessDate>23.11.2022</LeaderboardGuessDate>
@@ -73,7 +74,7 @@ const Location = () => {
             <LeaderboardItem>
               <LeaderboardItemLeft>
                 <LeaderboardPlace>2</LeaderboardPlace>
-                <AvatarSmall alt="" src="bled.jpg" />
+                <AvatarSmall />
                 <LeaderboardText>
                   <LeaderboardPersonName>Bian Klančnik</LeaderboardPersonName>
                   <LeaderboardGuessDate>22.11.2022</LeaderboardGuessDate>

@@ -37,7 +37,7 @@ const SignUp = () => {
           <FormText>
             Your name will appear on posts and your public profle.
           </FormText>
-          <AvatarLarge alt="" src="bled.jpg" />
+          <AvatarLarge />
           <FormInputTitle>Email</FormInputTitle>
           <FormInput placeholder="example@net.com" />
           <FormHalfContainer>

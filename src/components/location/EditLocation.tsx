@@ -1,3 +1,4 @@
+import { StockImage } from "../../assets/ImageExporter";
 import { GreenFont } from "../../styles/Global.styled";
 import {
   MainWithoutBackgroundCenter,
@@ -27,7 +28,7 @@ const EditLocation = () => {
           <AddLocationTitle>
             Edit <GreenFont>location</GreenFont>.
           </AddLocationTitle>
-          <AddLocationImage alt="" src="bled.jpg" />
+          <AddLocationImage alt="" src={StockImage} />
           <EditLocationText>Location: Slovenija</EditLocationText>
           <EditLocationButtonContainer>
             <PrimaryButton>UPLOAD IMAGE</PrimaryButton>

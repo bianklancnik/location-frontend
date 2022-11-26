@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { StockImage } from "../../assets/ImageExporter";
 
 export const WelcomeContainer = styled.div`
   display: flex;
@@ -68,7 +69,7 @@ export const BackgroundImageGridItem = styled.div`
       rgba(102, 159, 137, 0.6) 50%,
       rgba(159, 193, 129, 0.6) 128%
     ),
-    url("bled.jpg");
+    url(${StockImage});
   margin-bottom: 2%;
 `;
 
