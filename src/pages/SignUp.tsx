@@ -59,7 +59,7 @@ const SignUp = () => {
           <FullWidthPrimaryButton>SIGN UP</FullWidthPrimaryButton>
           <FormBottomContainer>
             <FormBottomText>Already have an account?</FormBottomText>
-            <StyledLinkPrimary to="/signin">Sign in</StyledLinkPrimary>
+            <StyledLinkPrimary to="/sign-in">Sign in</StyledLinkPrimary>
           </FormBottomContainer>
         </FormContainer>
       </LeftSideContainer>

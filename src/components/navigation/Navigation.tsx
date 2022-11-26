@@ -1,3 +1,5 @@
+import { BsPlus } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 import { Logo } from "../../assets/ImageExporter";
 import { AvatarSmall, StyledLink } from "../../styles/Global.styled";
 import { PrimaryButton } from "../common/Button.styled";
@@ -11,9 +13,9 @@ import {
   PlusSign,
   RightSide,
 } from "./Navigation.styled";
-import { BsPlus } from "react-icons/bs";
 
 const Navigation = () => {
+  const navigate = useNavigate();
   const isLoggedIn = true;
 
   return (
@@ -31,22 +33,26 @@ const Navigation = () => {
               <StyledLink to="/profile">Profile settings</StyledLink>
             </Item>
             <Item>
-              <StyledLink to="/signin">Logout</StyledLink>
+              <StyledLink to="/sign-in">Logout</StyledLink>
             </Item>
             <AvatarContainer>
               <AvatarSmall alt="" src="bled.jpg" />
-              <PlusSign>
+              <PlusSign
+                onClick={() => {
+                  navigate("/add-location");
+                }}
+              >
                 <BsPlus color="white" size={30} />
               </PlusSign>
             </AvatarContainer>
           </>
         ) : (
           <>
-            <StyledLink to="/signin">
+            <StyledLink to="/sign-in">
               <ItemBold>Sign in</ItemBold>
             </StyledLink>
             <Divider>or</Divider>
-            <StyledLink to="/signup">
+            <StyledLink to="/sign-up">
               <PrimaryButton>SIGN UP</PrimaryButton>
             </StyledLink>
           </>
