@@ -25,7 +25,7 @@ const Profile = () => {
       <Navigation />
       <MainWithoutBackgroundGap>
         <ProfileInfoContainer>
-          <AvatarLarge alt="" src="bled.jpg" />
+          <AvatarLarge />
           <ProfilePersonName>Jacob Jones</ProfilePersonName>
         </ProfileInfoContainer>
         <ProfileTitle>My best guesses</ProfileTitle>

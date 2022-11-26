@@ -1,4 +1,5 @@
 import { MdLockOutline } from "react-icons/md";
+import { StockImage } from "../assets/ImageExporter";
 import {
   AlternativeButton,
   PrimaryButton,
@@ -67,22 +68,22 @@ const Home = () => {
           </HomeContainerLeft>
           <ImageGrid>
             <ImageGridItem to="/location">
-              <ImageGridImg alt="" src="bled.jpg" />
+              <ImageGridImg alt="" src={StockImage} />
             </ImageGridItem>
             <ImageGridItem to="/location">
-              <ImageGridImg alt="" src="bled.jpg" />
+              <ImageGridImg alt="" src={StockImage} />
             </ImageGridItem>
             <ImageGridItem to="/location">
-              <ImageGridImg alt="" src="bled.jpg" />
+              <ImageGridImg alt="" src={StockImage} />
             </ImageGridItem>
             <ImageGridItem to="/location">
-              <ImageGridImg alt="" src="bled.jpg" />
+              <ImageGridImg alt="" src={StockImage} />
             </ImageGridItem>
             <ImageGridItem to="/location">
-              <ImageGridImg alt="" src="bled.jpg" />
+              <ImageGridImg alt="" src={StockImage} />
             </ImageGridItem>
             <ImageGridItem to="/location">
-              <ImageGridImg alt="" src="bled.jpg" />
+              <ImageGridImg alt="" src={StockImage} />
             </ImageGridItem>
           </ImageGrid>
           <ButtonCenterContainer>

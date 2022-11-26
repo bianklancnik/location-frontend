@@ -36,7 +36,7 @@ const Navigation = () => {
               <StyledLink to="/sign-in">Logout</StyledLink>
             </Item>
             <AvatarContainer>
-              <AvatarSmall alt="" src="bled.jpg" />
+              <AvatarSmall />
               <PlusSign
                 onClick={() => {
                   navigate("/add-location");

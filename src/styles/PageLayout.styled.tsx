@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { WorldMap } from "../assets/ImageExporter";
 
 export const Wrapper = styled.div`
   height: 100vh;
@@ -7,7 +8,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Main = styled.main`
-  background-image: url("WorldMap.png");
+  background-image: url(${WorldMap});
   background-repeat: no-repeat;
   background-position: top right;
   flex: 1;

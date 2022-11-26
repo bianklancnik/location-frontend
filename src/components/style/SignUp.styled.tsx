@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { BsEyeFill } from "react-icons/bs";
+import { MapImage } from "../../assets/ImageExporter";
 
 export const MainDivider = styled.div`
   display: flex;
@@ -21,7 +22,7 @@ export const RightSideContainer = styled.div`
       rgba(102, 159, 137, 0.6) 50%,
       rgba(159, 193, 129, 0.6) 128%
     ),
-    url("map.png");
+    url(${MapImage});
   display: flex;
   justify-content: center;
   align-items: center;
