@@ -53,7 +53,8 @@ export const ImageGrid = styled.div`
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 2%;
 `;
 
 export const BackgroundImageGridItem = styled.div`

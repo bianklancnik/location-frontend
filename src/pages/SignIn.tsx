@@ -1,43 +1,22 @@
 import { Logo, WhiteLogoVector } from "../assets/ImageExporter";
-import { FullWidthPrimaryButton } from "../components/common/Button.styled";
+import LoginForm from "../components/forms/loginForm/LoginForm";
 import {
-  FormBottomContainer,
-  FormBottomText,
-  FormContainer,
-  FormInput,
-  FormInputTitle,
-  FormText,
-  FormTitle,
   LeftSideContainer,
   LogoLeft,
   LogoRight,
   MainDivider,
   RightSideContainer,
 } from "../components/style/SignIn.styled";
-import { StyledLink, StyledLinkPrimary } from "../styles/Global.styled";
+import { StyledLink } from "../styles/Global.styled";
 
-const SignIn = () => {
+const SignIn = ({ onLogIn }: any) => {
   return (
     <MainDivider>
       <LeftSideContainer>
         <StyledLink to="/">
           <LogoLeft alt="" src={Logo} />
         </StyledLink>
-        <FormContainer>
-          <FormTitle>Sign in</FormTitle>
-          <FormText>
-            Welcome back to Geotagger. We are glad that you are back.
-          </FormText>
-          <FormInputTitle>Email</FormInputTitle>
-          <FormInput placeholder="example@net.com" />
-          <FormInputTitle>Password</FormInputTitle>
-          <FormInput type="password" />
-          <FullWidthPrimaryButton>SIGN IN</FullWidthPrimaryButton>
-          <FormBottomContainer>
-            <FormBottomText>Do you want to create an account?</FormBottomText>
-            <StyledLinkPrimary to="/sign-up">Sign up</StyledLinkPrimary>
-          </FormBottomContainer>
-        </FormContainer>
+        <LoginForm onLogIn={onLogIn} />
       </LeftSideContainer>
       <RightSideContainer>
         <LogoRight alt="" src={WhiteLogoVector} />

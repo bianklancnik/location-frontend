@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { StockImage } from "../../assets/ImageExporter";
 import { GreenFont } from "../../styles/Global.styled";
 import {
@@ -20,6 +21,8 @@ import {
 } from "./EditLocation.styled";
 
 const EditLocation = () => {
+  const navigate = useNavigate();
+
   return (
     <Wrapper>
       <Navigation />
@@ -34,7 +37,13 @@ const EditLocation = () => {
             <PrimaryButton>UPLOAD IMAGE</PrimaryButton>
             <EditLocationRightSide>
               <PrimaryButton>SAVE</PrimaryButton>
-              <EditLocationRightSideText>Cancel</EditLocationRightSideText>
+              <EditLocationRightSideText
+                onClick={() => {
+                  navigate("/profile");
+                }}
+              >
+                Cancel
+              </EditLocationRightSideText>
             </EditLocationRightSide>
           </EditLocationButtonContainer>
         </AddLocationContainer>

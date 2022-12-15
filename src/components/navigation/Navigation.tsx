@@ -16,7 +16,7 @@ import {
 
 const Navigation = () => {
   const navigate = useNavigate();
-  const isLoggedIn = true;
+  const isLoggedIn = localStorage.getItem("token");
 
   return (
     <NavigationContainer>
@@ -32,11 +32,18 @@ const Navigation = () => {
             <Item>
               <StyledLink to="/profile">Profile settings</StyledLink>
             </Item>
-            <Item>
-              <StyledLink to="/sign-in">Logout</StyledLink>
+            <Item
+              onClick={() => {
+                localStorage.clear();
+                window.location.reload();
+              }}
+            >
+              <StyledLink to="/">Logout</StyledLink>
             </Item>
             <AvatarContainer>
-              <AvatarSmall />
+              <StyledLink to="/profile">
+                <AvatarSmall />
+              </StyledLink>
               <PlusSign
                 onClick={() => {
                   navigate("/add-location");
