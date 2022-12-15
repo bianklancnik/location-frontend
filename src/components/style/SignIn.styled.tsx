@@ -33,7 +33,7 @@ export const LogoLeft = styled.img`
 
 export const LogoRight = styled.img``;
 
-export const FormContainer = styled.div`
+export const FormContainer = styled.form`
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -74,6 +74,12 @@ export const FormInput = styled.input`
     outline: none;
     box-shadow: 0px 0px 2px var(--dark);
   }
+`;
+
+export const FormError = styled.div`
+  color: red;
+  font-size: 12px;
+  max-width: 100%;
 `;
 
 export const FormBottomContainer = styled.div`

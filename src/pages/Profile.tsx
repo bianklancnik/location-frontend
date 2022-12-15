@@ -4,12 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { AlternativeButton } from "../components/common/Button.styled";
 import Footer from "../components/footer/Footer";
 import Navigation from "../components/navigation/Navigation";
-import { Distance, ImageGrid } from "../components/style/Home.styled";
+import { Distance } from "../components/style/Home.styled";
 import {
   DeleteUpload,
   EditUpload,
   GridItem,
   GridItemUpload,
+  ProfileImageGrid,
   ProfileInfoContainer,
   ProfilePersonName,
   ProfileTitle,
@@ -29,7 +30,7 @@ const Profile = () => {
           <ProfilePersonName>Jacob Jones</ProfilePersonName>
         </ProfileInfoContainer>
         <ProfileTitle>My best guesses</ProfileTitle>
-        <ImageGrid>
+        <ProfileImageGrid>
           <GridItem>
             <Distance>200 m</Distance>
           </GridItem>
@@ -39,15 +40,12 @@ const Profile = () => {
           <GridItem>
             <Distance>200 m</Distance>
           </GridItem>
-          <GridItem>
-            <Distance>200 m</Distance>
-          </GridItem>
-        </ImageGrid>
+        </ProfileImageGrid>
         <ButtonCenterContainer>
           <AlternativeButton>LOAD MORE</AlternativeButton>
         </ButtonCenterContainer>
         <ProfileTitle>My uploads</ProfileTitle>
-        <ImageGrid>
+        <ProfileImageGrid>
           <GridItemUpload>
             <EditUpload
               onClick={() => {
@@ -60,7 +58,19 @@ const Profile = () => {
               <HiOutlineX color="white" size={26} />
             </DeleteUpload>
           </GridItemUpload>
-        </ImageGrid>
+          <GridItemUpload>
+            <EditUpload
+              onClick={() => {
+                navigate("/edit-location");
+              }}
+            >
+              <FaPen color="white" size={18} />
+            </EditUpload>
+            <DeleteUpload>
+              <HiOutlineX color="white" size={26} />
+            </DeleteUpload>
+          </GridItemUpload>
+        </ProfileImageGrid>
         <ButtonCenterContainer>
           <AlternativeButton>LOAD MORE</AlternativeButton>
         </ButtonCenterContainer>

@@ -34,7 +34,7 @@ export const LogoLeft = styled.img`
 
 export const LogoRight = styled.img``;
 
-export const FormContainer = styled.div`
+export const FormContainer = styled.form`
   display: flex;
   flex-flow: column;
   justify-content: center;

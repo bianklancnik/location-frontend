@@ -17,6 +17,14 @@ export const ProfileTitle = styled.div`
   font-weight: 400;
 `;
 
+export const ProfileImageGrid = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.4%;
+`;
+
 export const GridItem = styled.div`
   width: 24%;
   height: 200px;

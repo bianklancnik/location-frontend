@@ -29,7 +29,7 @@ import {
 } from "../styles/PageLayout.styled";
 
 const Home = () => {
-  const isLoggedIn = true;
+  const isLoggedIn = localStorage.getItem("token");
 
   return (
     <Wrapper>

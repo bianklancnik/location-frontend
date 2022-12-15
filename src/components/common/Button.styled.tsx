@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const PrimaryButton = styled.div`
+export const PrimaryButton = styled.button`
   border: 0;
   outline: 0;
   border-radius: 3px;
@@ -14,12 +14,13 @@ export const PrimaryButton = styled.div`
   align-items: center;
   justify-content: center;
   transition: all 0.3s;
+  font-family: "Roboto";
   &:hover {
     background: var(--dark);
   }
 `;
 
-export const FullWidthPrimaryButton = styled.div`
+export const FullWidthPrimaryButton = styled.button`
   border: 0;
   outline: 0;
   border-radius: 3px;
@@ -33,12 +34,13 @@ export const FullWidthPrimaryButton = styled.div`
   align-items: center;
   justify-content: center;
   transition: all 0.3s;
+  font-family: "Roboto";
   &:hover {
     background: var(--dark);
   }
 `;
 
-export const AlternativeButton = styled.div`
+export const AlternativeButton = styled.button`
   outline: 0;
   border-radius: 3px;
   color: var(--primary);
@@ -53,6 +55,7 @@ export const AlternativeButton = styled.div`
   align-items: center;
   justify-content: center;
   transition: all 0.3s;
+  font-family: "Roboto";
   &:hover {
     background: var(--primary);
     color: #fff;
