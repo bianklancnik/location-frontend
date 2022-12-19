@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { singup } from "../../../api/auth";
+import { signup } from "../../../api/auth";
 import { RegisterData } from "../../../interfaces/auth.interface";
 import { AvatarLarge, StyledLinkPrimary } from "../../../styles/Global.styled";
 import { FullWidthPrimaryButton } from "../../common/Button.styled";
@@ -47,7 +47,7 @@ const SignUpForm = () => {
   });
 
   const signUp = async (data: RegisterData) => {
-    const result = await singup("/auth/register", data);
+    const result = await signup("/auth/register", data);
     if (result.request) {
       const data = JSON.parse(result.request.response);
       localStorage.setItem("token", data.access_token);
@@ -62,7 +62,7 @@ const SignUpForm = () => {
     <FormContainer onSubmit={onSubmit}>
       <FormTitle>Sign up</FormTitle>
       <FormText>
-        Your name will appear on posts and your public profle.
+        Your name will appear on posts and your public profile.
       </FormText>
       <AvatarLarge />
       <FormInputTitle>Email</FormInputTitle>

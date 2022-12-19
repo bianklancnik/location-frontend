@@ -14,6 +14,7 @@ import Profile from "./pages/Profile";
 import AddLocation from "./components/location/AddLocation";
 import EditLocation from "./components/location/EditLocation";
 import { useState } from "react";
+import Settings from "./pages/Settings";
 
 type ProtectedRouteType = {
   user: any;
@@ -45,6 +46,7 @@ function App() {
             <Route path="/sign-in" element={<SignIn onLogIn={onLogIn} />} />
           </Route>
           <Route element={<ProtectedRoute user={user} />}>
+            <Route path="/settings" element={<Settings />} />
             <Route path="/location" element={<Location />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/add-location" element={<AddLocation />} />
