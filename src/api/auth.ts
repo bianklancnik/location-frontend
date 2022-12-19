@@ -3,7 +3,7 @@ import { LogInData, RegisterData } from "../interfaces/auth.interface";
 
 const baseUrl = process.env.REACT_APP_URL;
 
-export const singup = async (endpoint: string, data: RegisterData) => {
+export const signup = async (endpoint: string, data: RegisterData) => {
   const registerData = {
     email: data.email,
     firstName: data.firstName,
