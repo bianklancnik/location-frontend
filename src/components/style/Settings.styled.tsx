@@ -9,7 +9,7 @@ export const SettingsWrapper = styled.div`
 
 export const SettingsContainer = styled.div`
   width: 30%;
-  height: 35%;
+  height: 40%;
   -webkit-box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.49);
   -moz-box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.49);
   box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.49);
@@ -18,14 +18,14 @@ export const SettingsContainer = styled.div`
   flex-flow: column;
   justify-content: left;
   padding: 32px;
-  gap: 28px;
+  gap: 8px;
 `;
 
 export const SettingsFormContainer = styled.form`
   display: flex;
   flex-flow: column;
   height: 80%;
-  gap: 28px;
+  gap: 10px;
   :last-of-type {
     margin-top: auto;
   }

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { LogInData, RegisterData } from "../interfaces/auth.interface";
+import { UpdateUser } from "../interfaces/user.interface";
 
 const baseUrl = process.env.REACT_APP_URL;
 
@@ -24,4 +25,33 @@ export const login = async (endpoint: string, data: LogInData) => {
   return axios.post(baseUrl + endpoint, logInData).catch((err) => {
     return err.response.data;
   });
+};
+
+export const userinfo = async (endpoint: string, token: string) => {
+  return axios
+    .get(baseUrl + endpoint, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+};
+
+export const update = async (
+  endpoint: string,
+  data: UpdateUser,
+  userId: number,
+  token: string
+) => {
+  return axios
+    .patch(
+      baseUrl + endpoint,
+      { ...data, id: userId },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    )
+    .catch((err) => {
+      return err.response.data;
+    });
 };

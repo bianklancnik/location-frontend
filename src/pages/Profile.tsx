@@ -20,6 +20,7 @@ import { MainWithoutBackgroundGap, Wrapper } from "../styles/PageLayout.styled";
 
 const Profile = () => {
   const navigate = useNavigate();
+  const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
 
   return (
     <Wrapper>
@@ -27,7 +28,9 @@ const Profile = () => {
       <MainWithoutBackgroundGap>
         <ProfileInfoContainer>
           <AvatarLarge />
-          <ProfilePersonName>Jacob Jones</ProfilePersonName>
+          <ProfilePersonName>
+            {userInfo.firstName} {userInfo.lastName}
+          </ProfilePersonName>
         </ProfileInfoContainer>
         <ProfileTitle>My best guesses</ProfileTitle>
         <ProfileImageGrid>

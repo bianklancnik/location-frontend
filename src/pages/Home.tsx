@@ -82,9 +82,6 @@ const Home = () => {
             <ImageGridItem to="/location">
               <ImageGridImg alt="" src={StockImage} />
             </ImageGridItem>
-            <ImageGridItem to="/location">
-              <ImageGridImg alt="" src={StockImage} />
-            </ImageGridItem>
           </ImageGrid>
           <ButtonCenterContainer>
             <StyledLink to="/sign-up">

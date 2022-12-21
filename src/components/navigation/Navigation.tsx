@@ -30,7 +30,7 @@ const Navigation = () => {
               <StyledLink to="/">Home</StyledLink>
             </Item>
             <Item>
-              <StyledLink to="/profile">Profile settings</StyledLink>
+              <StyledLink to="/settings">Profile settings</StyledLink>
             </Item>
             <Item
               onClick={() => {

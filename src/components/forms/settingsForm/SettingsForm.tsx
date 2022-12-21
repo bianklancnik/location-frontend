@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { update } from "../../../api/auth";
+import { UpdateUser } from "../../../interfaces/user.interface";
 // import { useNavigate } from "react-router-dom";
 import { AvatarLarge, StyledLink } from "../../../styles/Global.styled";
 import {
@@ -17,6 +19,7 @@ import {
   SettingsImageContainer,
   SettingsText,
 } from "../../style/Settings.styled";
+import { FormError } from "../../style/SignIn.styled";
 import {
   EyeIcon,
   FormHalfContainer,
@@ -30,17 +33,36 @@ import {
 const SettingsForm = () => {
   const [visible, setVisible] = useState<boolean>(true);
   const { register, handleSubmit, reset } = useForm();
-  //   const [pass, setPass] = useState<boolean>(true);
-  //   const [confirmPass, setConfirmPass] = useState<boolean>(true);
+  const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
   const navigate = useNavigate();
-  //   const [error, setError] = useState<any | null>();
+  const [error, setError] = useState<any | null>();
   const [changePass, setChangePass] = useState<boolean>(false);
   const [changeImg, setChangeImg] = useState<boolean>(false);
 
-  const onSubmit = handleSubmit(() => {
-    reset();
-    navigate("/profile");
+  const onSubmit = handleSubmit((data: UpdateUser) => {
+    if (!data) {
+      setError("At least one field must be filled out to submit the form");
+    } else if (data.newPassword !== data.confNewPassword) {
+      setError("Passwords do not match!");
+    } else {
+      updateUserInfo(data);
+    }
   });
+
+  const updateUserInfo = async (data: UpdateUser) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const result = await update("/user/update", data, userInfo.id, token);
+      if (result.request) {
+        const data = result.request.response;
+        reset();
+        localStorage.setItem("userInfo", data);
+        navigate("/profile");
+      } else {
+        setError(result.message);
+      }
+    }
+  };
 
   return (
     <>
@@ -49,13 +71,19 @@ const SettingsForm = () => {
           <SettingsText>Change your information.</SettingsText>
           <SettingsFieldContainer>
             <FormInputTitle>Email</FormInputTitle>
-            <FormInput {...register("email")} placeholder="example@net.com" />
+            <FormInput {...register("email")} placeholder={userInfo.email} />
           </SettingsFieldContainer>
           <FormHalfContainer>
             <FormInputTitleHalf>First Name</FormInputTitleHalf>
             <FormInputTitleHalf>Last Name</FormInputTitleHalf>
-            <FormInputHalf {...register("firstName")} placeholder="Jacob" />
-            <FormInputHalf {...register("lastName")} placeholder="Jones" />
+            <FormInputHalf
+              {...register("firstName")}
+              placeholder={userInfo.firstName}
+            />
+            <FormInputHalf
+              {...register("lastName")}
+              placeholder={userInfo.lastName}
+            />
           </FormHalfContainer>
           <SettingsButtonContainer>
             <HalfWidthDarkButton
@@ -73,6 +101,7 @@ const SettingsForm = () => {
               Change profile picture
             </HalfWidthPrimaryButton>
           </SettingsButtonContainer>
+          {error && <FormError>{error}</FormError>}
           <SettingsButtonContainer>
             <PrimaryButton>SUBMIT</PrimaryButton>
             <StyledLink to="/profile">Cancel</StyledLink>
@@ -130,6 +159,7 @@ const SettingsForm = () => {
               />
             </PasswordContainer>
           </SettingsFieldContainer>
+          {error && <FormError>{error}</FormError>}
           <SettingsButtonContainer>
             <PrimaryButton>SUBMIT</PrimaryButton>
             <SettingsButtonText
@@ -149,6 +179,7 @@ const SettingsForm = () => {
             <AvatarLarge />
           </SettingsImageContainer>
           <FullWidthPrimaryButton>UPLOAD NEW IMAGE</FullWidthPrimaryButton>
+          {error && <FormError>{error}</FormError>}
           <SettingsButtonContainer>
             <PrimaryButton>SUBMIT</PrimaryButton>
             <SettingsButtonText

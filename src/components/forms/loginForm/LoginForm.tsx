@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../../api/auth";
+import { login, userinfo } from "../../../api/auth";
 import { LogInData } from "../../../interfaces/auth.interface";
 import { StyledLinkPrimary } from "../../../styles/Global.styled";
 import { FullWidthPrimaryButton } from "../../common/Button.styled";
@@ -22,9 +22,11 @@ const LoginForm = ({ onLogIn }: any) => {
   const [error, setError] = useState<any | null>();
 
   const onSubmit = handleSubmit((data: LogInData) => {
-    if (data.email === "" || data.password === "")
+    if (data.email === "" || data.password === "") {
       setError("Fields must not be empty");
-    else signIn(data);
+    } else {
+      signIn(data);
+    }
   });
 
   const signIn = async (data: LogInData) => {
@@ -33,6 +35,8 @@ const LoginForm = ({ onLogIn }: any) => {
       const data = JSON.parse(result.request.response);
       localStorage.setItem("token", data.access_token);
       reset();
+      const userData = await userinfo("/user/me", data.access_token);
+      localStorage.setItem("userInfo", JSON.stringify(userData.data));
       onLogIn();
       navigate("/profile");
     } else {
