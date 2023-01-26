@@ -87,7 +87,11 @@ export const ImageGridItem = styled(Link)`
   justify-content: center;
   align-items: center;
   margin-bottom: 2%;
+  transition: all 0.2s ease-in-out;
   filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.15));
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const ImageGridImg = styled.img`

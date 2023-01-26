@@ -1,6 +1,6 @@
 import { BsPlus } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-import { Logo } from "../../assets/ImageExporter";
+import { Logo, StockImage } from "../../assets/ImageExporter";
 import { AvatarSmall, StyledLink } from "../../styles/Global.styled";
 import { PrimaryButton } from "../common/Button.styled";
 import {
@@ -17,6 +17,7 @@ import {
 const Navigation = () => {
   const navigate = useNavigate();
   const isLoggedIn = localStorage.getItem("token");
+  const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
 
   return (
     <NavigationContainer>
@@ -42,7 +43,9 @@ const Navigation = () => {
             </Item>
             <AvatarContainer>
               <StyledLink to="/profile">
-                <AvatarSmall />
+                <AvatarSmall
+                  src={userInfo.avatar ? userInfo.avatar : StockImage}
+                />
               </StyledLink>
               <PlusSign
                 onClick={() => {

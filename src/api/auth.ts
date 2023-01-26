@@ -55,3 +55,22 @@ export const update = async (
       return err.response.data;
     });
 };
+
+export const updateAvatar = async (
+  endpoint: string,
+  avatar: string,
+  userId: number,
+  token: string
+) => {
+  return axios
+    .patch(
+      baseUrl + endpoint,
+      { avatar, id: userId },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    )
+    .catch((err) => {
+      return err.response.data;
+    });
+};
