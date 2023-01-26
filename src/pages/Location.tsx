@@ -35,6 +35,9 @@ import {
 } from "../styles/PageLayout.styled";
 
 const Location = () => {
+  //current solution
+  const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
+
   return (
     <Wrapper>
       <Navigation />
@@ -63,7 +66,9 @@ const Location = () => {
             <LeaderboardItem>
               <LeaderboardItemLeft>
                 <LeaderboardPlace>1</LeaderboardPlace>
-                <AvatarSmall />
+                <AvatarSmall
+                  src={userInfo.avatar ? userInfo.avatar : StockImage}
+                />
                 <LeaderboardText>
                   <LeaderboardPersonName>Bian Klančnik</LeaderboardPersonName>
                   <LeaderboardGuessDate>23.11.2022</LeaderboardGuessDate>
@@ -74,7 +79,9 @@ const Location = () => {
             <LeaderboardItem>
               <LeaderboardItemLeft>
                 <LeaderboardPlace>2</LeaderboardPlace>
-                <AvatarSmall />
+                <AvatarSmall
+                  src={userInfo.avatar ? userInfo.avatar : StockImage}
+                />
                 <LeaderboardText>
                   <LeaderboardPersonName>Bian Klančnik</LeaderboardPersonName>
                   <LeaderboardGuessDate>22.11.2022</LeaderboardGuessDate>

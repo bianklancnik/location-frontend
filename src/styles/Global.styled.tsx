@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { StockImage } from "../assets/ImageExporter";
 
 export const StyledLinkPrimary = styled(Link)`
   text-decoration: none;
@@ -10,23 +9,24 @@ export const StyledLinkPrimary = styled(Link)`
 export const StyledLink = styled(Link)`
   text-decoration: none;
   color: var(--dark);
+  &:hover {
+    color: var(--primary);
+  }
 `;
 
-export const AvatarLarge = styled.div`
+export const AvatarLarge = styled.img`
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background-image: url(${StockImage});
-  background-size: cover;
+  object-fit: cover;
 `;
 
-export const AvatarSmall = styled.div`
+export const AvatarSmall = styled.img`
   width: 40px;
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
-  background-image: url(${StockImage});
-  background-size: cover;
+  object-fit: cover;
 `;
 
 export const GreenFont = styled.span`

@@ -55,7 +55,7 @@ export const SettingsButtonText = styled.div`
 export const SettingsButtonContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
-  gap: 20px;
+  gap: 16px;
   align-items: center;
   margin-top: auto;
 `;

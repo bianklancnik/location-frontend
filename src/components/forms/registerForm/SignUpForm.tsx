@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { signup } from "../../../api/auth";
+import { StockImage } from "../../../assets/ImageExporter";
 import { RegisterData } from "../../../interfaces/auth.interface";
 import { AvatarLarge, StyledLinkPrimary } from "../../../styles/Global.styled";
 import { FullWidthPrimaryButton } from "../../common/Button.styled";
@@ -64,7 +65,7 @@ const SignUpForm = () => {
       <FormText>
         Your name will appear on posts and your public profile.
       </FormText>
-      <AvatarLarge />
+      <AvatarLarge src={StockImage} />
       <FormInputTitle>Email</FormInputTitle>
       <FormInput {...register("email")} placeholder="example@net.com" />
       <FormHalfContainer>

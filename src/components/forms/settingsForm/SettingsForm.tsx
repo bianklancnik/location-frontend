@@ -3,10 +3,8 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { update } from "../../../api/auth";
 import { UpdateUser } from "../../../interfaces/user.interface";
-// import { useNavigate } from "react-router-dom";
-import { AvatarLarge, StyledLink } from "../../../styles/Global.styled";
+import { StyledLink } from "../../../styles/Global.styled";
 import {
-  FullWidthPrimaryButton,
   HalfWidthDarkButton,
   HalfWidthPrimaryButton,
   PrimaryButton,
@@ -16,7 +14,6 @@ import {
   SettingsButtonText,
   SettingsFieldContainer,
   SettingsFormContainer,
-  SettingsImageContainer,
   SettingsText,
 } from "../../style/Settings.styled";
 import { FormError } from "../../style/SignIn.styled";
@@ -29,6 +26,7 @@ import {
   FormInputTitleHalf,
   PasswordContainer,
 } from "../../style/SignUp.styled";
+import SettingsFormAvatar from "./SettingsFormAvatar";
 
 const SettingsForm = () => {
   const [visible, setVisible] = useState<boolean>(true);
@@ -38,6 +36,11 @@ const SettingsForm = () => {
   const [error, setError] = useState<any | null>();
   const [changePass, setChangePass] = useState<boolean>(false);
   const [changeImg, setChangeImg] = useState<boolean>(false);
+
+  const onCancel = () => {
+    setChangeImg(!changeImg);
+    setError("");
+  };
 
   const onSubmit = handleSubmit((data: UpdateUser) => {
     if (!data) {
@@ -66,132 +69,132 @@ const SettingsForm = () => {
 
   return (
     <>
-      {!changePass && !changeImg && (
-        <SettingsFormContainer onSubmit={onSubmit}>
-          <SettingsText>Change your information.</SettingsText>
-          <SettingsFieldContainer>
-            <FormInputTitle>Email</FormInputTitle>
-            <FormInput {...register("email")} placeholder={userInfo.email} />
-          </SettingsFieldContainer>
-          <FormHalfContainer>
-            <FormInputTitleHalf>First Name</FormInputTitleHalf>
-            <FormInputTitleHalf>Last Name</FormInputTitleHalf>
-            <FormInputHalf
-              {...register("firstName")}
-              placeholder={userInfo.firstName}
-            />
-            <FormInputHalf
-              {...register("lastName")}
-              placeholder={userInfo.lastName}
-            />
-          </FormHalfContainer>
-          <SettingsButtonContainer>
-            <HalfWidthDarkButton
-              onClick={() => {
-                setChangePass(!changePass);
-              }}
-            >
-              Change password
-            </HalfWidthDarkButton>
-            <HalfWidthPrimaryButton
-              onClick={() => {
-                setChangeImg(!changeImg);
-              }}
-            >
-              Change profile picture
-            </HalfWidthPrimaryButton>
-          </SettingsButtonContainer>
-          {error && <FormError>{error}</FormError>}
-          <SettingsButtonContainer>
-            <PrimaryButton>SUBMIT</PrimaryButton>
-            <StyledLink to="/profile">Cancel</StyledLink>
-          </SettingsButtonContainer>
-        </SettingsFormContainer>
-      )}
-      {changePass && !changeImg && (
-        <SettingsFormContainer onSubmit={onSubmit}>
-          <SettingsText>Change your information.</SettingsText>
-          <SettingsFieldContainer>
-            <FormInputTitle>Current password</FormInputTitle>
-            <PasswordContainer>
-              <FormInput
-                {...register("currPassword")}
-                type={`${visible ? "password" : "text"}`}
+      {
+        //Change user info
+        !changePass && !changeImg && (
+          <SettingsFormContainer onSubmit={onSubmit}>
+            <SettingsText>Change your information.</SettingsText>
+            <SettingsFieldContainer>
+              <FormInputTitle>Email</FormInputTitle>
+              <FormInput {...register("email")} placeholder={userInfo.email} />
+            </SettingsFieldContainer>
+            <FormHalfContainer>
+              <FormInputTitleHalf>First Name</FormInputTitleHalf>
+              <FormInputTitleHalf>Last Name</FormInputTitleHalf>
+              <FormInputHalf
+                {...register("firstName")}
+                placeholder={userInfo.firstName}
               />
-              <EyeIcon
+              <FormInputHalf
+                {...register("lastName")}
+                placeholder={userInfo.lastName}
+              />
+            </FormHalfContainer>
+            <SettingsButtonContainer>
+              <HalfWidthDarkButton
                 onClick={() => {
-                  setVisible(!visible);
+                  setChangePass(!changePass);
                 }}
-                size={20}
-                color="grey"
-              />
-            </PasswordContainer>
-          </SettingsFieldContainer>
-          <SettingsFieldContainer>
-            <FormInputTitle>New password</FormInputTitle>
-            <PasswordContainer>
-              <FormInput
-                {...register("newPassword")}
-                type={`${visible ? "password" : "text"}`}
-              />
-              <EyeIcon
+              >
+                Change password
+              </HalfWidthDarkButton>
+              <HalfWidthPrimaryButton
                 onClick={() => {
-                  setVisible(!visible);
+                  setChangeImg(!changeImg);
                 }}
-                size={20}
-                color="grey"
-              />
-            </PasswordContainer>
-          </SettingsFieldContainer>
-          <SettingsFieldContainer>
-            <FormInputTitle>Confirm new password</FormInputTitle>
-            <PasswordContainer>
-              <FormInput
-                {...register("confNewPassword")}
-                type={`${visible ? "password" : "text"}`}
-              />
-              <EyeIcon
+              >
+                Change profile picture
+              </HalfWidthPrimaryButton>
+            </SettingsButtonContainer>
+            {error && <FormError>{error}</FormError>}
+            <SettingsButtonContainer>
+              <PrimaryButton>SUBMIT</PrimaryButton>
+              <StyledLink
+                to="/profile"
                 onClick={() => {
-                  setVisible(!visible);
+                  setError("");
                 }}
-                size={20}
-                color="grey"
-              />
-            </PasswordContainer>
-          </SettingsFieldContainer>
-          {error && <FormError>{error}</FormError>}
-          <SettingsButtonContainer>
-            <PrimaryButton>SUBMIT</PrimaryButton>
-            <SettingsButtonText
-              onClick={() => {
-                setChangePass(!changePass);
-              }}
-            >
-              Cancel
-            </SettingsButtonText>
-          </SettingsButtonContainer>
-        </SettingsFormContainer>
-      )}
-      {!changePass && changeImg && (
-        <SettingsFormContainer onSubmit={onSubmit}>
-          <SettingsText>Change your profile photo.</SettingsText>
-          <SettingsImageContainer>
-            <AvatarLarge />
-          </SettingsImageContainer>
-          <FullWidthPrimaryButton>UPLOAD NEW IMAGE</FullWidthPrimaryButton>
-          {error && <FormError>{error}</FormError>}
-          <SettingsButtonContainer>
-            <PrimaryButton>SUBMIT</PrimaryButton>
-            <SettingsButtonText
-              onClick={() => {
-                setChangeImg(!changeImg);
-              }}
-            >
-              Cancel
-            </SettingsButtonText>
-          </SettingsButtonContainer>
-        </SettingsFormContainer>
-      )}
+              >
+                Cancel
+              </StyledLink>
+            </SettingsButtonContainer>
+          </SettingsFormContainer>
+        )
+      }
+
+      {
+        //Change password
+        changePass && !changeImg && (
+          <SettingsFormContainer onSubmit={onSubmit}>
+            <SettingsText>Change your information.</SettingsText>
+            <SettingsFieldContainer>
+              <FormInputTitle>Current password</FormInputTitle>
+              <PasswordContainer>
+                <FormInput
+                  {...register("currPassword")}
+                  type={`${visible ? "password" : "text"}`}
+                />
+                <EyeIcon
+                  onClick={() => {
+                    setVisible(!visible);
+                  }}
+                  size={20}
+                  color="grey"
+                />
+              </PasswordContainer>
+            </SettingsFieldContainer>
+            <SettingsFieldContainer>
+              <FormInputTitle>New password</FormInputTitle>
+              <PasswordContainer>
+                <FormInput
+                  {...register("newPassword")}
+                  type={`${visible ? "password" : "text"}`}
+                />
+                <EyeIcon
+                  onClick={() => {
+                    setVisible(!visible);
+                  }}
+                  size={20}
+                  color="grey"
+                />
+              </PasswordContainer>
+            </SettingsFieldContainer>
+            <SettingsFieldContainer>
+              <FormInputTitle>Confirm new password</FormInputTitle>
+              <PasswordContainer>
+                <FormInput
+                  {...register("confNewPassword")}
+                  type={`${visible ? "password" : "text"}`}
+                />
+                <EyeIcon
+                  onClick={() => {
+                    setVisible(!visible);
+                  }}
+                  size={20}
+                  color="grey"
+                />
+              </PasswordContainer>
+            </SettingsFieldContainer>
+            {error && <FormError>{error}</FormError>}
+            <SettingsButtonContainer>
+              <PrimaryButton>SUBMIT</PrimaryButton>
+              <SettingsButtonText
+                onClick={() => {
+                  setChangePass(!changePass);
+                  setError("");
+                }}
+              >
+                Cancel
+              </SettingsButtonText>
+            </SettingsButtonContainer>
+          </SettingsFormContainer>
+        )
+      }
+
+      {
+        //Change avatar
+        !changePass && changeImg && <SettingsFormAvatar onCancel={onCancel} />
+      }
     </>
   );
 };
