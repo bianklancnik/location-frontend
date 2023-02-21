@@ -5,7 +5,7 @@ const center = {
   lng: 14.505751499999974,
 };
 
-const Map = () => {
+const Map: any = () => {
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY || "",
   });

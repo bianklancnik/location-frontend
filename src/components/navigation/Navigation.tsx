@@ -1,6 +1,6 @@
 import { BsPlus } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-import { Logo, StockImage } from "../../assets/ImageExporter";
+import { Avatar, Logo } from "../../assets/ImageExporter";
 import { AvatarSmall, StyledLink } from "../../styles/Global.styled";
 import { PrimaryButton } from "../common/Button.styled";
 import {
@@ -43,9 +43,7 @@ const Navigation = () => {
             </Item>
             <AvatarContainer>
               <StyledLink to="/profile">
-                <AvatarSmall
-                  src={userInfo.avatar ? userInfo.avatar : StockImage}
-                />
+                <AvatarSmall src={userInfo.avatar ? userInfo.avatar : Avatar} />
               </StyledLink>
               <PlusSign
                 onClick={() => {

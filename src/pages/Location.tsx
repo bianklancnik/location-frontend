@@ -1,4 +1,4 @@
-import { StockImage } from "../assets/ImageExporter";
+import { Avatar, StockImage } from "../assets/ImageExporter";
 import { PrimaryButton } from "../components/common/Button.styled";
 import Footer from "../components/footer/Footer";
 import Map from "../components/map/Map";
@@ -66,9 +66,7 @@ const Location = () => {
             <LeaderboardItem>
               <LeaderboardItemLeft>
                 <LeaderboardPlace>1</LeaderboardPlace>
-                <AvatarSmall
-                  src={userInfo.avatar ? userInfo.avatar : StockImage}
-                />
+                <AvatarSmall src={userInfo.avatar ? userInfo.avatar : Avatar} />
                 <LeaderboardText>
                   <LeaderboardPersonName>Bian Klančnik</LeaderboardPersonName>
                   <LeaderboardGuessDate>23.11.2022</LeaderboardGuessDate>
@@ -79,9 +77,7 @@ const Location = () => {
             <LeaderboardItem>
               <LeaderboardItemLeft>
                 <LeaderboardPlace>2</LeaderboardPlace>
-                <AvatarSmall
-                  src={userInfo.avatar ? userInfo.avatar : StockImage}
-                />
+                <AvatarSmall src={userInfo.avatar ? userInfo.avatar : Avatar} />
                 <LeaderboardText>
                   <LeaderboardPersonName>Bian Klančnik</LeaderboardPersonName>
                   <LeaderboardGuessDate>22.11.2022</LeaderboardGuessDate>

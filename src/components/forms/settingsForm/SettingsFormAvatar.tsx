@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { updateAvatar } from "../../../api/auth";
 import { generateImageURL } from "../../../api/s3";
-import { StockImage } from "../../../assets/ImageExporter";
+import { Avatar } from "../../../assets/ImageExporter";
 import { AvatarLarge } from "../../../styles/Global.styled";
 import {
   FullWidthPrimaryButton,
@@ -21,7 +21,7 @@ import { FormError } from "../../style/SignIn.styled";
 const SettingsFormAvatar = ({ onCancel }: any) => {
   const [error, setError] = useState<any | null>();
   const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
-  const [image, setImage] = useState<any>(null);
+  const [image, setImage] = useState<any>(Avatar);
   const inputFile = useRef<any>(null);
   const navigate = useNavigate();
 
@@ -75,7 +75,7 @@ const SettingsFormAvatar = ({ onCancel }: any) => {
           style={{ display: "none" }}
           onChange={() => uploadImage()}
         />
-        <AvatarLarge src={image ? image ?? StockImage : userInfo.avatar} />
+        <AvatarLarge src={image ? image : userInfo.avatar} />
       </SettingsImageContainer>
       <FullWidthPrimaryButton
         type="button"

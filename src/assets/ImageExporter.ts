@@ -7,3 +7,4 @@ export const ImagePlaceholder = require("./images/ImagePlaceholder.png");
 export const StockImage = require("./images/Bled.jpg");
 export const MapImage = require("./images/GoogleMap.png");
 export const WorldMap = require("./images/WorldMap.png");
+export const Avatar = require("./images/Avatar.png");

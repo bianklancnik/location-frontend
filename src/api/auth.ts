@@ -74,3 +74,24 @@ export const updateAvatar = async (
       return err.response.data;
     });
 };
+
+export const forgotpw = async (endpoint: string, email: string) => {
+  return axios.post(baseUrl + endpoint, email).catch((err) => {
+    return err.response.data;
+  });
+};
+
+export const resetpassword = async (
+  endpoint: string,
+  data: any,
+  email: string
+) => {
+  const resetPwData = {
+    email: email,
+    token: data.token,
+    password: data.newPassword,
+  };
+  return axios.post(baseUrl + endpoint, resetPwData).catch((err) => {
+    return err.response.data;
+  });
+};

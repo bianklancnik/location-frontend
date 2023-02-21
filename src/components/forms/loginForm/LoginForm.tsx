@@ -60,6 +60,11 @@ const LoginForm = ({ onLogIn }: any) => {
         <FormBottomText>Do you want to create an account?</FormBottomText>
         <StyledLinkPrimary to="/sign-up">Sign up</StyledLinkPrimary>
       </FormBottomContainer>
+      <FormBottomContainer>
+        <StyledLinkPrimary to="/forgot-password">
+          Forgot your password?
+        </StyledLinkPrimary>
+      </FormBottomContainer>
     </FormContainer>
   );
 };
