@@ -1,7 +1,7 @@
 import { FaPen } from "react-icons/fa";
 import { HiOutlineX } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
-import { StockImage } from "../assets/ImageExporter";
+import { Avatar } from "../assets/ImageExporter";
 import { AlternativeButton } from "../components/common/Button.styled";
 import Footer from "../components/footer/Footer";
 import Navigation from "../components/navigation/Navigation";
@@ -28,7 +28,7 @@ const Profile = () => {
       <Navigation />
       <MainWithoutBackgroundGap>
         <ProfileInfoContainer>
-          <AvatarLarge src={userInfo.avatar ? userInfo.avatar : StockImage} />
+          <AvatarLarge src={userInfo.avatar ? userInfo.avatar : Avatar} />
           <ProfilePersonName>
             {userInfo.firstName} {userInfo.lastName}
           </ProfilePersonName>

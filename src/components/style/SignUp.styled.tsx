@@ -41,6 +41,7 @@ export const FormContainer = styled.form`
   align-items: center;
   margin: auto;
   gap: 8px;
+  max-width: 75%;
 `;
 
 export const FormTitle = styled.div`

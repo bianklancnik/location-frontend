@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   BrowserRouter,
   Navigate,
@@ -5,16 +6,17 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import "./styles/Global.css";
-import Home from "./pages/Home";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
-import Location from "./pages/Location";
-import Profile from "./pages/Profile";
 import AddLocation from "./components/location/AddLocation";
 import EditLocation from "./components/location/EditLocation";
-import { useState } from "react";
+import ChangePassword from "./pages/ChangePassword";
+import ForgotPassword from "./pages/ForgotPassword";
+import Home from "./pages/Home";
+import Location from "./pages/Location";
+import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import "./styles/Global.css";
 
 type ProtectedRouteType = {
   user: any;
@@ -44,6 +46,8 @@ function App() {
           <Route element={<ProtectedRoute user={!user} />}>
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/sign-in" element={<SignIn onLogIn={onLogIn} />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/change-password" element={<ChangePassword />} />
           </Route>
           <Route element={<ProtectedRoute user={user} />}>
             <Route path="/settings" element={<Settings />} />
