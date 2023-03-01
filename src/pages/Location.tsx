@@ -1,7 +1,7 @@
 import { Avatar, StockImage } from "../assets/ImageExporter";
 import { PrimaryButton } from "../components/common/Button.styled";
 import Footer from "../components/footer/Footer";
-import Map from "../components/map/Map";
+import InitMap from "../components/map/InitMap";
 import Navigation from "../components/navigation/Navigation";
 import {
   BottomInputContainer,
@@ -47,7 +47,7 @@ const Location = () => {
             Take a <GreenFont>guess</GreenFont>!
           </LocationTitle>
           <LocationImage alt="" src={StockImage} />
-          <LocationMap>{<Map />}</LocationMap>
+          <LocationMap>{<InitMap />}</LocationMap>
           <BottomInputContainer>
             <BottomInputErrorTitle>Error distance</BottomInputErrorTitle>
             <BottomInputLocationTitle>

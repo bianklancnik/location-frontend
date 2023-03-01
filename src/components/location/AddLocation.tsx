@@ -1,4 +1,5 @@
 import { HiOutlineX } from "react-icons/hi";
+import { useRef, useState } from "react";
 import { ImagePlaceholder } from "../../assets/ImageExporter";
 import { ButtonRightContainer, GreenFont } from "../../styles/Global.styled";
 import {
@@ -7,9 +8,9 @@ import {
 } from "../../styles/PageLayout.styled";
 import { PrimaryButton } from "../common/Button.styled";
 import Footer from "../footer/Footer";
-import Map from "../map/Map";
+import InitMap from "../map/InitMap";
 import Navigation from "../navigation/Navigation";
-import { FormInput, FormInputTitle } from "../style/SignIn.styled";
+import { FormError, FormInput, FormInputTitle } from "../style/SignIn.styled";
 import {
   AddLocationContainer,
   AddLocationImage,
@@ -18,8 +19,65 @@ import {
   DeleteUploadedImage,
   UploadImageContainer,
 } from "./AddLocation.styled";
+import { generateImageURL } from "../../api/s3";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { addlocation } from "../../api/location";
 
 const AddLocation = () => {
+  const [error, setError] = useState<any | null>();
+  const [address, setAddress] = useState<string>("");
+  const [coords, setCoords] = useState<any>();
+  const [image, setImage] = useState<any>(ImagePlaceholder);
+  const navigate = useNavigate();
+  const inputFile = useRef<any>(null);
+
+  const uploadImage = async () => {
+    try {
+      const s3 = {
+        headers: {
+          "Content-Type": "image/png",
+        },
+      };
+      const s3url = await generateImageURL();
+      if (inputFile.current) {
+        await axios.put(s3url, inputFile.current.files[0], s3);
+        const imageUrl = s3url.split("?")[0];
+        setImage(imageUrl);
+      }
+    } catch (error) {
+      setError(error);
+      return null;
+    }
+  };
+
+  const addLocation = async () => {
+    setError("");
+    if (!address || image === ImagePlaceholder) {
+      setError("Please choose an image and a location on the map.");
+    } else {
+      try {
+        const token = localStorage.getItem("token");
+        if (token) {
+          const { lat, lng } = coords;
+          const data = { address: address, lat: lat, lon: lng, img: image };
+          const result = await addlocation("/location", data, token);
+          if (result.request) {
+            alert("Location added!");
+            navigate("/profile");
+          }
+        }
+      } catch (error) {
+        return error;
+      }
+    }
+  };
+
+  const onMarkerChange = (address: string, loc: any) => {
+    setAddress(address);
+    setCoords(loc);
+  };
+
   return (
     <Wrapper>
       <Navigation />
@@ -28,18 +86,41 @@ const AddLocation = () => {
           <AddLocationTitle>
             Add a new <GreenFont>location</GreenFont>.
           </AddLocationTitle>
-          <AddLocationImage alt="" src={ImagePlaceholder} />
+          <input
+            type="file"
+            id="avatar"
+            ref={inputFile}
+            style={{ display: "none" }}
+            onChange={() => uploadImage()}
+          />
+          <AddLocationImage alt="" src={image ? image : ImagePlaceholder} />
           <UploadImageContainer>
-            <PrimaryButton>UPLOAD IMAGE</PrimaryButton>
-            <DeleteUploadedImage>
+            <PrimaryButton
+              type="button"
+              onClick={() => {
+                inputFile.current.click();
+              }}
+            >
+              UPLOAD IMAGE
+            </PrimaryButton>
+            <DeleteUploadedImage
+              onClick={() => {
+                setImage(ImagePlaceholder);
+              }}
+            >
               <HiOutlineX color="white" size={26} />
             </DeleteUploadedImage>
           </UploadImageContainer>
-          <AddLocationMap>{<Map />}</AddLocationMap>
+          <AddLocationMap>
+            {<InitMap onMarkerChange={onMarkerChange} />}
+          </AddLocationMap>
           <FormInputTitle>Location</FormInputTitle>
-          <FormInput />
+          <FormInput value={address} disabled />
+          {error && <FormError>{error}</FormError>}
           <ButtonRightContainer>
-            <PrimaryButton>ADD NEW</PrimaryButton>
+            <PrimaryButton type="button" onClick={() => addLocation()}>
+              ADD NEW
+            </PrimaryButton>
           </ButtonRightContainer>
         </AddLocationContainer>
       </MainWithoutBackgroundCenter>
