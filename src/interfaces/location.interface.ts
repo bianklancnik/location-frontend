@@ -4,3 +4,11 @@ export type AddLocationData = {
   lon: number;
   img: string;
 };
+
+export type LocationType = {
+  id: number;
+  address: string;
+  img: string;
+  lat: number;
+  lon: number;
+};
