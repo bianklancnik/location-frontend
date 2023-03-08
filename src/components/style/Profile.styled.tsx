@@ -51,8 +51,20 @@ export const GridItemUpload = styled.div`
   align-items: center;
   background-size: cover;
   background-position: center;
-  background-image: url(${StockImage});
+  background-image: url(${(props: any) => props.image});
   position: relative;
+`;
+
+GridItemUpload.defaultProps = {
+  image: StockImage,
+};
+
+export const EmptyGridItem = styled.div`
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const EditUpload = styled.div`
