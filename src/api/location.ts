@@ -1,5 +1,8 @@
 import axios from "axios";
-import { AddLocationData } from "../interfaces/location.interface";
+import {
+  AddLocationData,
+  GuessLocationData,
+} from "../interfaces/location.interface";
 
 const baseUrl = process.env.REACT_APP_URL;
 
@@ -54,8 +57,44 @@ export const getuserlocations = async (endpoint: string, token: string) => {
     });
 };
 
+export const getalllocations = async (endpoint: string) => {
+  return axios.get(baseUrl + endpoint).catch((err) => {
+    return err.response.data;
+  });
+};
+
 export const getlocationbyid = async (endpoint: string) => {
   return axios.get(baseUrl + endpoint).catch((err) => {
     return err.response.data;
   });
+};
+
+export const getdistancesbylocationid = async (endpoint: string) => {
+  return axios.get(baseUrl + endpoint).catch((err) => {
+    return err.response.data;
+  });
+};
+
+export const islocationguessed = async (endpoint: string, token: string) => {
+  return axios
+    .get(baseUrl + endpoint, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+};
+
+export const guesslocation = async (
+  endpoint: string,
+  data: GuessLocationData,
+  token: string
+) => {
+  return axios
+    .post(baseUrl + endpoint, data, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
 };

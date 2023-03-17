@@ -100,16 +100,21 @@ export const LeaderboardItemLeft = styled.div`
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  justify-content: space-around;
-  width: 230px;
+  justify-content: space-between;
 `;
 
 export const LeaderboardPlace = styled.div`
   width: 27px;
   height: 27px;
 
-  /* Gradient orange */
-  background: linear-gradient(41.75deg, #fe7f2d 22.78%, #fcca46 87.18%);
+  background-image: ${(props: any) =>
+    props.rank === 1
+      ? "linear-gradient(41.75deg, #fe7f2d 22.78%, #fcca46 87.18%)"
+      : props.rank === 2
+      ? "linear-gradient(41.75deg, #999999 22.78%, #d8d8d8 87.18%);"
+      : props.rank === 3
+      ? "linear-gradient(41.75deg, #956956 22.78%, #d79376 87.18%)"
+      : "#233D4D"};
   border-radius: 30px;
   display: flex;
   justify-content: center;
@@ -117,7 +122,15 @@ export const LeaderboardPlace = styled.div`
   color: #fff;
 `;
 
-export const LeaderboardText = styled.div``;
+export const LeaderboardText = styled.div`
+  padding-left: 1em;
+`;
+
+export const LeaderboardAvatar = styled.div`
+  padding-left: 1em;
+  display: flex;
+  align-items: center;
+`;
 
 export const LeaderboardPersonName = styled.div``;
 

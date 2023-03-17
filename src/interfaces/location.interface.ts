@@ -12,3 +12,20 @@ export type LocationType = {
   lat: number;
   lon: number;
 };
+
+export type GuessLocationData = {
+  lat: number;
+  lon: number;
+};
+
+export type LeaderboardType = {
+  createdAt: string;
+  distance: number;
+  user: UserLeaderboardType;
+};
+
+export type UserLeaderboardType = {
+  firstName: string;
+  lastName: string;
+  avatar: string;
+};

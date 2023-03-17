@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { StockImage } from "../../assets/ImageExporter";
 
@@ -80,7 +79,7 @@ export const Distance = styled.div`
   font-size: 30px;
 `;
 
-export const ImageGridItem = styled(Link)`
+export const ImageGridItem = styled.div`
   width: 32%;
   border-radius: 4px;
   display: flex;
@@ -96,6 +95,9 @@ export const ImageGridItem = styled(Link)`
 
 export const ImageGridImg = styled.img`
   width: 100%;
+  height: 280px;
+  image-rendering: auto;
+  object-fit: cover;
   border-radius: 4px;
 `;
 
