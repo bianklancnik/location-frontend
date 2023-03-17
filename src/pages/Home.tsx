@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import { MdLockOutline } from "react-icons/md";
-import { StockImage } from "../assets/ImageExporter";
+import { useNavigate } from "react-router-dom";
+import { getalllocations } from "../api/location";
 import {
   AlternativeButton,
   PrimaryButton,
@@ -21,6 +23,7 @@ import {
   WelcomeItem,
   WelcomeTitle,
 } from "../components/style/Home.styled";
+import { LocationType } from "../interfaces/location.interface";
 import { ButtonCenterContainer, StyledLink } from "../styles/Global.styled";
 import {
   Main,
@@ -29,12 +32,48 @@ import {
 } from "../styles/PageLayout.styled";
 
 const Home = () => {
-  const isLoggedIn = localStorage.getItem("token");
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+  const [locations, setLocations] = useState<LocationType[]>([]);
+
+  const getAllLocations = async () => {
+    const result = await getalllocations("/location");
+    if (result.request) {
+      const data = result.request.response;
+      const response = JSON.parse(data);
+      setLocations(response);
+    }
+  };
+
+  const viewLocation = async (id: number) => {
+    navigate("/location", {
+      state: { id: id },
+    });
+  };
+
+  const showAllLocations = () => {
+    return locations.map((location) => {
+      return (
+        <ImageGridItem
+          key={location.id}
+          onClick={() => {
+            viewLocation(location.id);
+          }}
+        >
+          <ImageGridImg alt="" src={location.img} />
+        </ImageGridItem>
+      );
+    });
+  };
+
+  useEffect(() => {
+    getAllLocations();
+  }, []);
 
   return (
     <Wrapper>
       <Navigation />
-      {isLoggedIn ? (
+      {token ? (
         <MainWithoutBackground>
           <HomeContainerLeft>
             <HomeTitle>Personal best guesses</HomeTitle>
@@ -66,23 +105,7 @@ const Home = () => {
               on a picture.
             </HomeItemLeft>
           </HomeContainerLeft>
-          <ImageGrid>
-            <ImageGridItem to="/location">
-              <ImageGridImg alt="" src={StockImage} />
-            </ImageGridItem>
-            <ImageGridItem to="/location">
-              <ImageGridImg alt="" src={StockImage} />
-            </ImageGridItem>
-            <ImageGridItem to="/location">
-              <ImageGridImg alt="" src={StockImage} />
-            </ImageGridItem>
-            <ImageGridItem to="/location">
-              <ImageGridImg alt="" src={StockImage} />
-            </ImageGridItem>
-            <ImageGridItem to="/location">
-              <ImageGridImg alt="" src={StockImage} />
-            </ImageGridItem>
-          </ImageGrid>
+          <ImageGrid>{showAllLocations()}</ImageGrid>
           <ButtonCenterContainer>
             <StyledLink to="/sign-up">
               <AlternativeButton>LOAD MORE</AlternativeButton>
