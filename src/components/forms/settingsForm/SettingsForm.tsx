@@ -43,7 +43,7 @@ const SettingsForm = () => {
   };
 
   const onSubmit = handleSubmit((data: UpdateUser) => {
-    if (!data) {
+    if (!data.email && !data.firstName && !data.lastName) {
       setError("At least one field must be filled out to submit the form");
     } else if (data.newPassword !== data.confNewPassword) {
       setError("Passwords do not match!");
@@ -93,6 +93,7 @@ const SettingsForm = () => {
             <SettingsButtonContainer>
               <HalfWidthDarkButton
                 onClick={() => {
+                  setError("");
                   setChangePass(!changePass);
                 }}
               >
@@ -100,6 +101,7 @@ const SettingsForm = () => {
               </HalfWidthDarkButton>
               <HalfWidthPrimaryButton
                 onClick={() => {
+                  setError("");
                   setChangeImg(!changeImg);
                 }}
               >
