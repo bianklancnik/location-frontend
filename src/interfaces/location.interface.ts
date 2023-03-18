@@ -13,6 +13,16 @@ export type LocationType = {
   lon: number;
 };
 
+export type BestGuessesType = {
+  distance: number;
+  location: BestGuessesLocationType;
+};
+
+type BestGuessesLocationType = {
+  id: number;
+  img: string;
+};
+
 export type GuessLocationData = {
   lat: number;
   lon: number;
@@ -24,7 +34,7 @@ export type LeaderboardType = {
   user: UserLeaderboardType;
 };
 
-export type UserLeaderboardType = {
+type UserLeaderboardType = {
   firstName: string;
   lastName: string;
   avatar: string;

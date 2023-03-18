@@ -39,7 +39,7 @@ export const GridItem = styled.div`
       rgba(102, 159, 137, 0.6) 50%,
       rgba(159, 193, 129, 0.6) 128%
     ),
-    url(${StockImage});
+    url(${(props: any) => props.image});
 `;
 
 export const GridItemUpload = styled.div`

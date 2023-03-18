@@ -57,6 +57,16 @@ export const getuserlocations = async (endpoint: string, token: string) => {
     });
 };
 
+export const getuserbestguesses = async (endpoint: string, token: string) => {
+  return axios
+    .get(baseUrl + endpoint, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+};
+
 export const getalllocations = async (endpoint: string) => {
   return axios.get(baseUrl + endpoint).catch((err) => {
     return err.response.data;

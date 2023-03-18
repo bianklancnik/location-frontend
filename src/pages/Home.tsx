@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { MdLockOutline } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { getalllocations } from "../api/location";
+import { getalllocations, getuserbestguesses } from "../api/location";
 import {
   AlternativeButton,
   PrimaryButton,
@@ -23,7 +23,11 @@ import {
   WelcomeItem,
   WelcomeTitle,
 } from "../components/style/Home.styled";
-import { LocationType } from "../interfaces/location.interface";
+import { EmptyGridItem } from "../components/style/Profile.styled";
+import {
+  BestGuessesType,
+  LocationType,
+} from "../interfaces/location.interface";
 import { ButtonCenterContainer, StyledLink } from "../styles/Global.styled";
 import {
   Main,
@@ -35,6 +39,7 @@ const Home = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const [locations, setLocations] = useState<LocationType[]>([]);
+  const [bestGuesses, setBestGuesses] = useState<BestGuessesType[]>([]);
 
   const getAllLocations = async () => {
     const result = await getalllocations("/location");
@@ -45,6 +50,17 @@ const Home = () => {
     }
   };
 
+  const getUserBestGuesses = async () => {
+    if (token) {
+      const result = await getuserbestguesses("/distance/user/best", token);
+      if (result.request) {
+        const data = result.request.response;
+        const response = JSON.parse(data);
+        setBestGuesses(response);
+      }
+    }
+  };
+
   const viewLocation = async (id: number) => {
     navigate("/location", {
       state: { id: id },
@@ -52,22 +68,44 @@ const Home = () => {
   };
 
   const showAllLocations = () => {
-    return locations.map((location) => {
-      return (
-        <ImageGridItem
-          key={location.id}
-          onClick={() => {
-            viewLocation(location.id);
-          }}
-        >
-          <ImageGridImg alt="" src={location.img} />
-        </ImageGridItem>
-      );
-    });
+    if (Object.keys(locations).length !== 0) {
+      return locations.map((location) => {
+        return (
+          <ImageGridItem
+            key={location.id}
+            onClick={() => {
+              viewLocation(location.id);
+            }}
+          >
+            <ImageGridImg alt="" src={location.img} />
+          </ImageGridItem>
+        );
+      });
+    } else {
+      return <EmptyGridItem>No locations to display</EmptyGridItem>;
+    }
+  };
+
+  const showBestGuesses = () => {
+    if (Object.keys(bestGuesses).length !== 0) {
+      return bestGuesses.map((guess) => {
+        return (
+          <BackgroundImageGridItem
+            key={guess.location.id}
+            image={guess.location.img}
+          >
+            <Distance>{guess.distance} m</Distance>
+          </BackgroundImageGridItem>
+        );
+      });
+    } else {
+      return <EmptyGridItem>No locations to display</EmptyGridItem>;
+    }
   };
 
   useEffect(() => {
     getAllLocations();
+    getUserBestGuesses();
   }, []);
 
   return (
@@ -82,17 +120,7 @@ const Home = () => {
               personal records or set a new one!
             </HomeItemLeft>
           </HomeContainerLeft>
-          <ImageGrid>
-            <BackgroundImageGridItem>
-              <Distance>200 m</Distance>
-            </BackgroundImageGridItem>
-            <BackgroundImageGridItem>
-              <Distance>200 m</Distance>
-            </BackgroundImageGridItem>
-            <BackgroundImageGridItem>
-              <Distance>200 m</Distance>
-            </BackgroundImageGridItem>
-          </ImageGrid>
+          <ImageGrid>{showBestGuesses()}</ImageGrid>
           <ButtonCenterContainer>
             <StyledLink to="/sign-up">
               <AlternativeButton>LOAD MORE</AlternativeButton>
