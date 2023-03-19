@@ -40,9 +40,11 @@ const Home = () => {
   const token = localStorage.getItem("token");
   const [locations, setLocations] = useState<LocationType[]>([]);
   const [bestGuesses, setBestGuesses] = useState<BestGuessesType[]>([]);
+  const [pages, setPages] = useState<number>(1);
 
   const getAllLocations = async () => {
-    const result = await getalllocations("/location");
+    const limit: number = pages * 3;
+    const result = await getalllocations(`/location?limit=${limit}`);
     if (result.request) {
       const data = result.request.response;
       const response = JSON.parse(data);
@@ -52,7 +54,11 @@ const Home = () => {
 
   const getUserBestGuesses = async () => {
     if (token) {
-      const result = await getuserbestguesses("/distance/user/best", token);
+      const limit: number = pages * 3;
+      const result = await getuserbestguesses(
+        `/distance/user/best?limit=${limit}`,
+        token
+      );
       if (result.request) {
         const data = result.request.response;
         const response = JSON.parse(data);
@@ -108,6 +114,15 @@ const Home = () => {
     getUserBestGuesses();
   }, []);
 
+  useEffect(() => {
+    getAllLocations();
+    getUserBestGuesses();
+  }, [pages]);
+
+  const addPage = () => {
+    setPages(pages + 1);
+  };
+
   return (
     <Wrapper>
       <Navigation />
@@ -122,9 +137,9 @@ const Home = () => {
           </HomeContainerLeft>
           <ImageGrid>{showBestGuesses()}</ImageGrid>
           <ButtonCenterContainer>
-            <StyledLink to="/sign-up">
-              <AlternativeButton>LOAD MORE</AlternativeButton>
-            </StyledLink>
+            <AlternativeButton type="button" onClick={addPage}>
+              LOAD MORE
+            </AlternativeButton>
           </ButtonCenterContainer>
           <HomeContainerLeft>
             <HomeTitle>New locations</HomeTitle>
@@ -135,9 +150,9 @@ const Home = () => {
           </HomeContainerLeft>
           <ImageGrid>{showAllLocations()}</ImageGrid>
           <ButtonCenterContainer>
-            <StyledLink to="/sign-up">
-              <AlternativeButton>LOAD MORE</AlternativeButton>
-            </StyledLink>
+            <AlternativeButton type="button" onClick={addPage}>
+              LOAD MORE
+            </AlternativeButton>
           </ButtonCenterContainer>
         </MainWithoutBackground>
       ) : (

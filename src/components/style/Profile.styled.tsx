@@ -22,7 +22,7 @@ export const ProfileImageGrid = styled.div`
   flex-flow: row wrap;
   align-items: center;
   justify-content: flex-start;
-  gap: 1.4%;
+  gap: 1.3%;
 `;
 
 export const GridItem = styled.div`

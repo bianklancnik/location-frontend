@@ -163,6 +163,7 @@ const Location = () => {
         const response = JSON.parse(data);
         setDistance(response);
       }
+      getLeaderboard();
     }
   };
 
