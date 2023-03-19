@@ -1,5 +1,8 @@
-import { HiOutlineX } from "react-icons/hi";
+import axios from "axios";
 import { useRef, useState } from "react";
+import { HiOutlineX } from "react-icons/hi";
+import { addlocation } from "../../api/location";
+import { generateImageURL } from "../../api/s3";
 import { ImagePlaceholder } from "../../assets/ImageExporter";
 import { ButtonRightContainer, GreenFont } from "../../styles/Global.styled";
 import {
@@ -7,6 +10,7 @@ import {
   Wrapper,
 } from "../../styles/PageLayout.styled";
 import { PrimaryButton } from "../common/Button.styled";
+import ConformationPage from "../common/ConformationPage";
 import Footer from "../footer/Footer";
 import InitMap from "../map/InitMap";
 import Navigation from "../navigation/Navigation";
@@ -19,17 +23,13 @@ import {
   DeleteUploadedImage,
   UploadImageContainer,
 } from "./AddLocation.styled";
-import { generateImageURL } from "../../api/s3";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { addlocation } from "../../api/location";
 
 const AddLocation = () => {
   const [error, setError] = useState<any | null>();
   const [address, setAddress] = useState<string>("");
   const [coords, setCoords] = useState<any>();
   const [image, setImage] = useState<any>(ImagePlaceholder);
-  const navigate = useNavigate();
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const inputFile = useRef<any>(null);
 
   const uploadImage = async () => {
@@ -63,8 +63,7 @@ const AddLocation = () => {
           const data = { address: address, lat: lat, lon: lng, img: image };
           const result = await addlocation("/location", data, token);
           if (result.request) {
-            alert("Location added!");
-            navigate("/profile");
+            setIsSubmitted(true);
           }
         }
       } catch (error) {
@@ -78,54 +77,70 @@ const AddLocation = () => {
     setCoords(loc);
   };
 
+  const onClose = () => {
+    setIsSubmitted(false);
+  };
+
   return (
-    <Wrapper>
-      <Navigation />
-      <MainWithoutBackgroundCenter>
-        <AddLocationContainer>
-          <AddLocationTitle>
-            Add a new <GreenFont>location</GreenFont>.
-          </AddLocationTitle>
-          <input
-            type="file"
-            id="avatar"
-            ref={inputFile}
-            style={{ display: "none" }}
-            onChange={() => uploadImage()}
-          />
-          <AddLocationImage alt="" src={image ? image : ImagePlaceholder} />
-          <UploadImageContainer>
-            <PrimaryButton
-              type="button"
-              onClick={() => {
-                inputFile.current.click();
-              }}
-            >
-              UPLOAD IMAGE
-            </PrimaryButton>
-            <DeleteUploadedImage
-              onClick={() => {
-                setImage(ImagePlaceholder);
-              }}
-            >
-              <HiOutlineX color="white" size={26} />
-            </DeleteUploadedImage>
-          </UploadImageContainer>
-          <AddLocationMap>
-            {<InitMap onMarkerChange={onMarkerChange} />}
-          </AddLocationMap>
-          <FormInputTitle>Location</FormInputTitle>
-          <FormInput value={address} disabled />
-          {error && <FormError>{error}</FormError>}
-          <ButtonRightContainer>
-            <PrimaryButton type="button" onClick={() => addLocation()}>
-              ADD NEW
-            </PrimaryButton>
-          </ButtonRightContainer>
-        </AddLocationContainer>
-      </MainWithoutBackgroundCenter>
-      <Footer />
-    </Wrapper>
+    <>
+      {isSubmitted ? (
+        <ConformationPage
+          title="Location added!"
+          text="New location was added successfully."
+          onClose={() => {
+            onClose();
+          }}
+        />
+      ) : (
+        <Wrapper>
+          <Navigation />
+          <MainWithoutBackgroundCenter>
+            <AddLocationContainer>
+              <AddLocationTitle>
+                Add a new <GreenFont>location</GreenFont>.
+              </AddLocationTitle>
+              <input
+                type="file"
+                id="avatar"
+                ref={inputFile}
+                style={{ display: "none" }}
+                onChange={() => uploadImage()}
+              />
+              <AddLocationImage alt="" src={image ? image : ImagePlaceholder} />
+              <UploadImageContainer>
+                <PrimaryButton
+                  type="button"
+                  onClick={() => {
+                    inputFile.current.click();
+                  }}
+                >
+                  UPLOAD IMAGE
+                </PrimaryButton>
+                <DeleteUploadedImage
+                  onClick={() => {
+                    setImage(ImagePlaceholder);
+                  }}
+                >
+                  <HiOutlineX color="white" size={26} />
+                </DeleteUploadedImage>
+              </UploadImageContainer>
+              <AddLocationMap>
+                {<InitMap onMarkerChange={onMarkerChange} />}
+              </AddLocationMap>
+              <FormInputTitle>Location</FormInputTitle>
+              <FormInput value={address} disabled />
+              {error && <FormError>{error}</FormError>}
+              <ButtonRightContainer>
+                <PrimaryButton type="button" onClick={() => addLocation()}>
+                  ADD NEW
+                </PrimaryButton>
+              </ButtonRightContainer>
+            </AddLocationContainer>
+          </MainWithoutBackgroundCenter>
+          <Footer />
+        </Wrapper>
+      )}
+    </>
   );
 };
 
