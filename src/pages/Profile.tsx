@@ -2,45 +2,36 @@ import { useEffect, useState } from "react";
 import { FaPen } from "react-icons/fa";
 import { HiOutlineX } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
-import {
-  deletelocation,
-  getuserbestguesses,
-  getuserlocations,
-} from "../api/location";
+import { deletelocation, getuserlocations } from "../api/location";
 import { Avatar } from "../assets/ImageExporter";
 import { AlternativeButton } from "../components/common/Button.styled";
+import ConformationPage from "../components/common/ConformationPage";
 import Footer from "../components/footer/Footer";
+import BestGuesses from "../components/location/BestGuesses";
 import Navigation from "../components/navigation/Navigation";
-import {
-  BestGuessesType,
-  LocationType,
-} from "../interfaces/location.interface";
-import { Distance } from "../components/style/Home.styled";
 import {
   DeleteUpload,
   EditUpload,
   EmptyGridItem,
-  GridItem,
   GridItemUpload,
   ProfileImageGrid,
   ProfileInfoContainer,
   ProfilePersonName,
   ProfileTitle,
 } from "../components/style/Profile.styled";
+import { LocationType } from "../interfaces/location.interface";
 import { AvatarLarge, ButtonCenterContainer } from "../styles/Global.styled";
 import { MainWithoutBackgroundGap, Wrapper } from "../styles/PageLayout.styled";
-import ConformationPage from "../components/common/ConformationPage";
 
 const Profile = () => {
   const navigate = useNavigate();
   const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
   const [locations, setLocations] = useState<LocationType[]>([]);
-  const [bestGuesses, setBestGuesses] = useState<BestGuessesType[]>([]);
   const [token, setToken] = useState<string>();
   const [pages, setPages] = useState<number>(1);
   const [isDeleted, setIsDeleted] = useState<boolean>(false);
 
-  const getUserLocationsAndBestGuesses = async () => {
+  const getUserLocations = async () => {
     //add pagination for mobile
     const limit: number = pages * 4;
     const loadToken = localStorage.getItem("token");
@@ -55,15 +46,6 @@ const Profile = () => {
         const response = JSON.parse(data);
         setLocations(response);
       }
-      const resultGuess = await getuserbestguesses(
-        `/distance/user/best?limit=${limit}`,
-        loadToken
-      );
-      if (resultGuess.request) {
-        const data = resultGuess.request.response;
-        const response = JSON.parse(data);
-        setBestGuesses(response);
-      }
     }
   };
 
@@ -73,7 +55,7 @@ const Profile = () => {
         const result = await deletelocation(`/location/${id}`, token);
         if (result.request) {
           setIsDeleted(true);
-          getUserLocationsAndBestGuesses();
+          getUserLocations();
         }
       } catch (error) {
         return error;
@@ -88,29 +70,15 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    getUserLocationsAndBestGuesses();
+    getUserLocations();
   }, []);
 
   useEffect(() => {
-    getUserLocationsAndBestGuesses();
+    getUserLocations();
   }, [pages]);
 
   const addPage = () => {
     setPages(pages + 1);
-  };
-
-  const showBestGuesses = () => {
-    if (Object.keys(bestGuesses).length !== 0) {
-      return bestGuesses.map((guess) => {
-        return (
-          <GridItem key={guess.location.id} image={guess.location.img}>
-            <Distance>{guess.distance} m</Distance>
-          </GridItem>
-        );
-      });
-    } else {
-      return <EmptyGridItem>No locations to display</EmptyGridItem>;
-    }
   };
 
   const showUserLocations = () => {
@@ -165,12 +133,7 @@ const Profile = () => {
               </ProfilePersonName>
             </ProfileInfoContainer>
             <ProfileTitle>My best guesses</ProfileTitle>
-            <ProfileImageGrid>{showBestGuesses()}</ProfileImageGrid>
-            <ButtonCenterContainer>
-              <AlternativeButton type="button" onClick={addPage}>
-                LOAD MORE
-              </AlternativeButton>
-            </ButtonCenterContainer>
+            <BestGuesses isHome={false} />
             <ProfileTitle>My uploads</ProfileTitle>
             <ProfileImageGrid>{showUserLocations()}</ProfileImageGrid>
             <ButtonCenterContainer>

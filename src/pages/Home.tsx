@@ -1,33 +1,21 @@
-import { useEffect, useState } from "react";
 import { MdLockOutline } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
-import { getalllocations, getuserbestguesses } from "../api/location";
-import {
-  AlternativeButton,
-  PrimaryButton,
-} from "../components/common/Button.styled";
+import { PrimaryButton } from "../components/common/Button.styled";
 import Footer from "../components/footer/Footer";
+import AllLocations from "../components/location/AllLocations";
+import BestGuesses from "../components/location/BestGuesses";
 import Navigation from "../components/navigation/Navigation";
 import {
   BackgroundImageGridItem,
-  Distance,
   HomeContainerLeft,
   HomeContainerMiddle,
   HomeItemLeft,
   HomeItemMiddle,
   HomeTitle,
   ImageGrid,
-  ImageGridImg,
-  ImageGridItem,
   WelcomeContainer,
   WelcomeItem,
   WelcomeTitle,
 } from "../components/style/Home.styled";
-import { EmptyGridItem } from "../components/style/Profile.styled";
-import {
-  BestGuessesType,
-  LocationType,
-} from "../interfaces/location.interface";
 import { ButtonCenterContainer, StyledLink } from "../styles/Global.styled";
 import {
   Main,
@@ -36,92 +24,7 @@ import {
 } from "../styles/PageLayout.styled";
 
 const Home = () => {
-  const navigate = useNavigate();
   const token = localStorage.getItem("token");
-  const [locations, setLocations] = useState<LocationType[]>([]);
-  const [bestGuesses, setBestGuesses] = useState<BestGuessesType[]>([]);
-  const [pages, setPages] = useState<number>(1);
-
-  const getAllLocations = async () => {
-    const limit: number = pages * 3;
-    const result = await getalllocations(`/location?limit=${limit}`);
-    if (result.request) {
-      const data = result.request.response;
-      const response = JSON.parse(data);
-      setLocations(response);
-    }
-  };
-
-  const getUserBestGuesses = async () => {
-    if (token) {
-      const limit: number = pages * 3;
-      const result = await getuserbestguesses(
-        `/distance/user/best?limit=${limit}`,
-        token
-      );
-      if (result.request) {
-        const data = result.request.response;
-        const response = JSON.parse(data);
-        setBestGuesses(response);
-      }
-    }
-  };
-
-  const viewLocation = async (id: number) => {
-    navigate("/location", {
-      state: { id: id },
-    });
-  };
-
-  const showAllLocations = () => {
-    if (Object.keys(locations).length !== 0) {
-      return locations.map((location) => {
-        return (
-          <ImageGridItem
-            key={location.id}
-            onClick={() => {
-              viewLocation(location.id);
-            }}
-          >
-            <ImageGridImg alt="" src={location.img} />
-          </ImageGridItem>
-        );
-      });
-    } else {
-      return <EmptyGridItem>No locations to display</EmptyGridItem>;
-    }
-  };
-
-  const showBestGuesses = () => {
-    if (Object.keys(bestGuesses).length !== 0) {
-      return bestGuesses.map((guess) => {
-        return (
-          <BackgroundImageGridItem
-            key={guess.location.id}
-            image={guess.location.img}
-          >
-            <Distance>{guess.distance} m</Distance>
-          </BackgroundImageGridItem>
-        );
-      });
-    } else {
-      return <EmptyGridItem>No locations to display</EmptyGridItem>;
-    }
-  };
-
-  useEffect(() => {
-    getAllLocations();
-    getUserBestGuesses();
-  }, []);
-
-  useEffect(() => {
-    getAllLocations();
-    getUserBestGuesses();
-  }, [pages]);
-
-  const addPage = () => {
-    setPages(pages + 1);
-  };
 
   return (
     <Wrapper>
@@ -135,12 +38,7 @@ const Home = () => {
               personal records or set a new one!
             </HomeItemLeft>
           </HomeContainerLeft>
-          <ImageGrid>{showBestGuesses()}</ImageGrid>
-          <ButtonCenterContainer>
-            <AlternativeButton type="button" onClick={addPage}>
-              LOAD MORE
-            </AlternativeButton>
-          </ButtonCenterContainer>
+          <BestGuesses isHome={true} />
           <HomeContainerLeft>
             <HomeTitle>New locations</HomeTitle>
             <HomeItemLeft>
@@ -148,12 +46,7 @@ const Home = () => {
               on a picture.
             </HomeItemLeft>
           </HomeContainerLeft>
-          <ImageGrid>{showAllLocations()}</ImageGrid>
-          <ButtonCenterContainer>
-            <AlternativeButton type="button" onClick={addPage}>
-              LOAD MORE
-            </AlternativeButton>
-          </ButtonCenterContainer>
+          <AllLocations />
         </MainWithoutBackground>
       ) : (
         <Main>

@@ -10,8 +10,10 @@ import {
   Wrapper,
 } from "../../styles/PageLayout.styled";
 import { PrimaryButton } from "../common/Button.styled";
+import ConformationPage from "../common/ConformationPage";
 import Footer from "../footer/Footer";
 import Navigation from "../navigation/Navigation";
+import { FormError } from "../style/SignIn.styled";
 import {
   AddLocationContainer,
   AddLocationImage,
@@ -30,7 +32,9 @@ const EditLocation = () => {
   const { id } = state;
   const [image, setImage] = useState<any>();
   const inputFile = useRef<any>(null);
+  const [error, setError] = useState<any | null>();
   const [location, setLocation] = useState<LocationType>();
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   const uploadImage = async () => {
     try {
@@ -51,6 +55,7 @@ const EditLocation = () => {
   };
 
   const updateLocation = async () => {
+    setError("");
     try {
       const token = localStorage.getItem("token");
       if (token && image && location) {
@@ -60,9 +65,12 @@ const EditLocation = () => {
           token
         );
         if (result.request) {
-          alert("Location updated!");
-          getLocationInfo();
+          setIsSubmitted(true);
+        } else {
+          setError(result.message);
         }
+      } else {
+        setError("No changes detected, please upload an image.");
       }
     } catch (error) {
       return error;
@@ -80,55 +88,73 @@ const EditLocation = () => {
     }
   };
 
+  const onClose = () => {
+    setIsSubmitted(false);
+    getLocationInfo();
+  };
+
   useEffect(() => {
     getLocationInfo();
   }, []);
 
   return (
-    <Wrapper>
-      <Navigation />
-      <MainWithoutBackgroundCenter>
-        <AddLocationContainer>
-          <AddLocationTitle>
-            Edit <GreenFont>location</GreenFont>.
-          </AddLocationTitle>
-          <input
-            type="file"
-            id="avatar"
-            ref={inputFile}
-            style={{ display: "none" }}
-            onChange={() => uploadImage()}
-          />
-          <AddLocationImage alt="" src={image ? image : location?.img} />
-          <EditLocationText>
-            Location: {location && location.address}
-          </EditLocationText>
-          <EditLocationButtonContainer>
-            <PrimaryButton
-              type="button"
-              onClick={() => {
-                inputFile.current.click();
-              }}
-            >
-              UPLOAD IMAGE
-            </PrimaryButton>
-            <EditLocationRightSide>
-              <PrimaryButton type="button" onClick={() => updateLocation()}>
-                SAVE
-              </PrimaryButton>
-              <EditLocationRightSideText
-                onClick={() => {
-                  navigate("/profile");
-                }}
-              >
-                Cancel
-              </EditLocationRightSideText>
-            </EditLocationRightSide>
-          </EditLocationButtonContainer>
-        </AddLocationContainer>
-      </MainWithoutBackgroundCenter>
-      <Footer />
-    </Wrapper>
+    <>
+      {isSubmitted ? (
+        <ConformationPage
+          title="Location updated!"
+          text="Location was updated successfully."
+          onClose={() => {
+            onClose();
+          }}
+        />
+      ) : (
+        <Wrapper>
+          <Navigation />
+          <MainWithoutBackgroundCenter>
+            <AddLocationContainer>
+              <AddLocationTitle>
+                Edit <GreenFont>location</GreenFont>.
+              </AddLocationTitle>
+              <input
+                type="file"
+                id="avatar"
+                ref={inputFile}
+                style={{ display: "none" }}
+                onChange={() => uploadImage()}
+              />
+              <AddLocationImage alt="" src={image ? image : location?.img} />
+              <EditLocationText>
+                Location: {location && location.address}
+              </EditLocationText>
+              {error && <FormError>{error}</FormError>}
+              <EditLocationButtonContainer>
+                <PrimaryButton
+                  type="button"
+                  onClick={() => {
+                    inputFile.current.click();
+                  }}
+                >
+                  UPLOAD IMAGE
+                </PrimaryButton>
+                <EditLocationRightSide>
+                  <PrimaryButton type="button" onClick={() => updateLocation()}>
+                    SAVE
+                  </PrimaryButton>
+                  <EditLocationRightSideText
+                    onClick={() => {
+                      navigate("/profile");
+                    }}
+                  >
+                    Cancel
+                  </EditLocationRightSideText>
+                </EditLocationRightSide>
+              </EditLocationButtonContainer>
+            </AddLocationContainer>
+          </MainWithoutBackgroundCenter>
+          <Footer />
+        </Wrapper>
+      )}
+    </>
   );
 };
 
