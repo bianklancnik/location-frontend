@@ -1,46 +1,72 @@
-# Getting Started with Create React App
+# Geotagger (SkillUp Mentor)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Link to website: TODO
 
-## Available Scripts
+### Table of Contents
 
-In the project directory, you can run:
+- [Description](#description)
+- [How To Use](#how-to-use)
+- [References](#references)
+- [Stay In Touch](#stay-in-touch)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Description
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Full-stack application for guessing locations with Google Maps based on the picture. Users can add new locations, edit and delete those locations.
+Specific location also has a leadreboard, so you can compare your guess with other users.
+Application also allows you to sign up if you don't have an account yet. If you forget your password you can retrieve with your email address.
+You can edit your account info and upload a profile image.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Home page**
+![geotagger_homepage](./src/assets/homepage.png)
 
-### `npm run build`
+## Technologies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- HTML
+- CSS
+- JavaScript
+- Typescript
+- NodeJS
+- ReactJS
+- NestJS
+- ExpressJS
+- PostgreSQL
+- TypeORM
+- AWS
+- Docker
+- Figma
+- Git
+- Github
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## How To Use
 
-### `npm run eject`
+#### Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Clone this repository and run:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+# install dependencies
+$ npm i
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Running the app
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+# development
+$ npm start
+```
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## References
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- SkillUp Mentor - [skillupmentor](https://skillupmentor.com/)
+
+## Stay in touch
+
+- Author - [Bian Klančnik](https://www.linkedin.com/in/bian-klan%C4%8Dnik-7b611815a/?originalSubdomain=si)
