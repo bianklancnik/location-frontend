@@ -51,7 +51,7 @@ const BestGuesses = ({ isHome }: BestGuessesRenderType) => {
             key={guess.location.id}
             image={guess.location.img}
           >
-            <Distance>{guess.distance} m</Distance>
+            <Distance>{guess.distance} km</Distance>
           </BackgroundImageGridItem>
         );
       });
@@ -59,7 +59,7 @@ const BestGuesses = ({ isHome }: BestGuessesRenderType) => {
       return bestGuesses.map((guess) => {
         return (
           <GridItem key={guess.location.id} image={guess.location.img}>
-            <Distance>{guess.distance} m</Distance>
+            <Distance>{guess.distance} km</Distance>
           </GridItem>
         );
       });

@@ -8,7 +8,7 @@ export const SettingsWrapper = styled.div`
 `;
 
 export const SettingsContainer = styled.div`
-  width: 30%;
+  width: 60%;
   height: 40%;
   -webkit-box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.49);
   -moz-box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.49);
@@ -19,6 +19,10 @@ export const SettingsContainer = styled.div`
   justify-content: left;
   padding: 32px;
   gap: 8px;
+  @media screen and (min-width: 768px) {
+    width: 30%;
+    height: 40%;
+  }
 `;
 
 export const SettingsFormContainer = styled.form`
@@ -55,7 +59,10 @@ export const SettingsButtonText = styled.div`
 export const SettingsButtonContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
-  gap: 16px;
+  gap: 15px;
   align-items: center;
   margin-top: auto;
+  @media screen and (min-width: 768px) {
+    gap: 16px;
+  }
 `;

@@ -12,6 +12,71 @@ body {
   color: var(--dark);
 }
 
+
+
 /* body * {
   outline: auto;
 } */
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #659E89;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background: #659E89;
+}
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: absolute;
+  width: 4%;
+  height: 2%;
+  right: 4%;
+  top: 4%;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 70px;
+  width: 70px;
+  left: 8px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #659E89;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: #ffffff;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.8em;
+}
+
+/* Individual item */
+.bm-item {
+  display: flex;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
