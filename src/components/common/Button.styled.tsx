@@ -40,6 +40,29 @@ export const FullWidthPrimaryButton = styled.button`
   }
 `;
 
+export const FullWidthAlternativeButton = styled.button`
+  border: 0;
+  outline: 0;
+  border-radius: 3px;
+  color: var(--primary);
+  background: #fff;
+  border: 1px solid var(--primary);
+  border-radius: 4px;
+  width: 100%;
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  font-family: "Roboto";
+  &:hover {
+    background: var(--primary);
+    color: #fff;
+  }
+`;
+
 export const AlternativeButton = styled.button`
   outline: 0;
   border-radius: 3px;

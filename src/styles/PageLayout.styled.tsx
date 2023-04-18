@@ -17,29 +17,42 @@ export const Main = styled.main`
 
 export const MainWithoutBackground = styled.main`
   flex: 1;
-  padding: 50px;
+  padding: 25px;
+  @media screen and (min-width: 768px) {
+    padding: 50px;
+  }
 `;
 
 export const MainWithoutBackgroundCenter = styled.main`
   flex: 1;
-  padding: 50px;
+  padding: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media screen and (min-width: 768px) {
+    padding: 50px;
+  }
 `;
 
 export const MainWithoutBackgroundGap = styled.main`
   flex: 1;
-  padding: 50px;
+  padding: 25px;
   display: flex;
   flex-direction: column;
   gap: 18px;
+  @media screen and (min-width: 768px) {
+    padding: 50px;
+  }
 `;
 
 export const MainWithoutBackgroundSplit = styled.main`
   flex: 1;
-  padding: 50px;
+  padding: 25px;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   justify-content: space-between;
+  @media screen and (min-width: 768px) {
+    flex-flow: row wrap;
+    padding: 50px;
+  }
 `;

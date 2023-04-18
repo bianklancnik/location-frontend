@@ -90,3 +90,9 @@ export const FormBottomContainer = styled.div`
 `;
 
 export const FormBottomText = styled.div``;
+
+export const MobileFormContainer = styled.div`
+  height: 100vh;
+  display: flex;
+  align-items: center;
+`;

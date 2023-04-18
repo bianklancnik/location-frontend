@@ -22,11 +22,13 @@ export const ProfileImageGrid = styled.div`
   flex-flow: row wrap;
   align-items: center;
   justify-content: flex-start;
-  gap: 1.3%;
+  @media screen and (min-width: 768px) {
+    gap: 1.3%;
+  }
 `;
 
 export const GridItem = styled.div`
-  width: 24%;
+  width: 100%;
   height: 200px;
   border-radius: 4px;
   display: flex;
@@ -40,10 +42,16 @@ export const GridItem = styled.div`
       rgba(159, 193, 129, 0.6) 128%
     ),
     url(${(props: any) => props.image});
+  @media screen and (min-width: 768px) {
+    width: 24%;
+  }
+  @media screen and (max-width: 768px) {
+    margin-bottom: 2%;
+  }
 `;
 
 export const GridItemUpload = styled.div`
-  width: 24%;
+  width: 100%;
   height: 200px;
   border-radius: 4px;
   display: flex;
@@ -53,6 +61,12 @@ export const GridItemUpload = styled.div`
   background-position: center;
   background-image: url(${(props: any) => props.image});
   position: relative;
+  @media screen and (min-width: 768px) {
+    width: 24%;
+  }
+  @media screen and (max-width: 768px) {
+    margin-bottom: 2%;
+  }
 `;
 
 GridItemUpload.defaultProps = {

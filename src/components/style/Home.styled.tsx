@@ -3,19 +3,35 @@ import styled from "styled-components";
 export const WelcomeContainer = styled.div`
   display: flex;
   flex-flow: column;
-  width: 35%;
-  justify-content: flex-start;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
   gap: 20px;
   padding: 5% 0 15% 0;
+  @media screen and (min-width: 768px) {
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 35%;
+  }
 `;
 
 export const WelcomeTitle = styled.div`
-  font-size: 64px;
+  font-size: 34px;
   font-weight: 500;
   color: var(--primary);
+  text-align: center;
+  @media screen and (min-width: 768px) {
+    font-size: 64px;
+    text-align: left;
+  }
 `;
 
-export const WelcomeItem = styled.div``;
+export const WelcomeItem = styled.div`
+  text-align: center;
+  @media screen and (min-width: 768px) {
+    text-align: left;
+  }
+`;
 
 export const HomeContainerMiddle = styled.div`
   display: flex;
@@ -32,8 +48,11 @@ export const HomeTitle = styled.div`
 `;
 
 export const HomeItemMiddle = styled.div`
-  width: 40%;
+  width: 100%;
   text-align: center;
+  @media screen and (min-width: 768px) {
+    width: 40%;
+  }
 `;
 
 export const HomeContainerLeft = styled.div`
@@ -41,6 +60,9 @@ export const HomeContainerLeft = styled.div`
   flex-flow: column;
   gap: 10px;
   margin-bottom: 4%;
+  @media screen and (max-width: 768px) {
+    margin-top: 5%;
+  }
 `;
 
 export const HomeItemLeft = styled.div`
@@ -49,15 +71,18 @@ export const HomeItemLeft = styled.div`
 
 export const ImageGrid = styled.div`
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   align-items: center;
   justify-content: flex-start;
   gap: 2%;
+  @media screen and (min-width: 768px) {
+    flex-flow: row wrap;
+  }
 `;
 
 export const BackgroundImageGridItem = styled.div`
-  height: 280px;
-  width: 32%;
+  height: 200px;
+  width: 100%;
   border-radius: 4px;
   display: flex;
   justify-content: center;
@@ -70,6 +95,10 @@ export const BackgroundImageGridItem = styled.div`
     ),
     url(${(props: any) => props.image});
   margin-bottom: 2%;
+  @media screen and (min-width: 768px) {
+    height: 280px;
+    width: 32%;
+  }
 `;
 
 export const Distance = styled.div`
@@ -79,7 +108,7 @@ export const Distance = styled.div`
 `;
 
 export const ImageGridItem = styled.div`
-  width: 32%;
+  width: 100%;
   border-radius: 4px;
   display: flex;
   justify-content: center;
@@ -87,8 +116,12 @@ export const ImageGridItem = styled.div`
   margin-bottom: 2%;
   transition: all 0.2s ease-in-out;
   filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.15));
-  &:hover {
-    transform: scale(1.1);
+  cursor: pointer;
+  @media screen and (min-width: 768px) {
+    width: 32%;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 `;
 

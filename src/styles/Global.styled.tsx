@@ -14,6 +14,21 @@ export const StyledLink = styled(Link)`
   }
 `;
 
+export const ArrowLink = styled(Link)`
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: var(--dark);
+`;
+
+export const ArrowLinkFull = styled(Link)`
+  width: 100%;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: var(--dark);
+`;
+
 export const AvatarLarge = styled.img`
   width: 64px;
   height: 64px;
@@ -42,8 +57,13 @@ export const ButtonRightContainer = styled.div`
 
 export const ButtonLeftContainer = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
+  text-align: right;
   align-items: center;
+  @media screen and (min-width: 768px) {
+    justify-content: flex-start;
+    text-align: left;
+  }
 `;
 
 export const ButtonCenterContainer = styled.div`

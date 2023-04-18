@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
 export const LocationContainer = styled.div`
-  width: 65%;
+  width: 100%;
   display: flex;
   flex-flow: column;
   gap: 10px;
+  @media screen and (min-width: 768px) {
+    width: 65%;
+  }
 `;
 
 export const LocationTitle = styled.div`
@@ -75,7 +78,13 @@ export const BottomInputLocation = styled.input`
 `;
 
 export const LeaderboardContainer = styled.div`
-  width: 34%;
+  width: 100%;
+  @media screen and (min-width: 768px) {
+    width: 34%;
+  }
+  @media screen and (max-width: 768px) {
+    margin-top: 10%;
+  }
 `;
 
 export const LeaderboardTitle = styled.div`
